@@ -1,0 +1,30 @@
+import { RadialLabels } from './radial-labels.interface';
+import { Scale } from './scale.interface';
+import { LineCap } from './line-cap';
+/**
+ * The scale options of the Gauge.
+ */
+export interface ArcScale extends Scale {
+    /**
+     * Configures the scale labels.
+     */
+    labels?: RadialLabels;
+    /**
+     * The distance between the range indicators and the ticks.
+     */
+    rangeDistance?: number;
+    /**
+     * The `lineCap` style of the ranges.
+     */
+    rangeLineCap?: LineCap;
+    /**
+     * The starting angle of the Gauge.
+     * The Gauge is rendered clockwise (0 degrees equal 180 degrees in the polar coordinate system).
+     */
+    startAngle?: number;
+    /**
+     * The ending angle of the Gauge.
+     * The Gauge is rendered clockwise (0 degrees equals 180 degrees in the polar coordinate system).
+     */
+    endAngle?: number;
+}

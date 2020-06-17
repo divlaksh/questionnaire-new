@@ -1,0 +1,92 @@
+import * as tslib_1 from "tslib";
+import { Input } from '@angular/core';
+import { ComponentMessages } from '@progress/kendo-angular-l10n';
+/**
+ * @hidden
+ */
+var Messages = /** @class */ (function (_super) {
+    tslib_1.__extends(Messages, _super);
+    function Messages() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Messages.propDecorators = {
+        allEvents: [{ type: Input }],
+        allDay: [{ type: Input }],
+        dateHeader: [{ type: Input }],
+        timeHeader: [{ type: Input }],
+        eventHeader: [{ type: Input }],
+        deleteTitle: [{ type: Input }],
+        nextTitle: [{ type: Input }],
+        previousTitle: [{ type: Input }],
+        today: [{ type: Input }],
+        calendarToday: [{ type: Input }],
+        showFullDay: [{ type: Input }],
+        showWorkDay: [{ type: Input }],
+        dayViewTitle: [{ type: Input }],
+        multiDayViewTitle: [{ type: Input }],
+        weekViewTitle: [{ type: Input }],
+        workWeekViewTitle: [{ type: Input }],
+        monthViewTitle: [{ type: Input }],
+        timelineViewTitle: [{ type: Input }],
+        timelineWeekViewTitle: [{ type: Input }],
+        timelineMonthViewTitle: [{ type: Input }],
+        agendaViewTitle: [{ type: Input }],
+        cancel: [{ type: Input }],
+        save: [{ type: Input }],
+        editorEventTitle: [{ type: Input }],
+        editorEventStart: [{ type: Input }],
+        editorEventStartTimeZone: [{ type: Input }],
+        editorEventEnd: [{ type: Input }],
+        editorEventEndTimeZone: [{ type: Input }],
+        editorEventAllDay: [{ type: Input }],
+        editorEventDescription: [{ type: Input }],
+        editorEventSeparateTimeZones: [{ type: Input }],
+        editorEventTimeZone: [{ type: Input }],
+        recurrenceEditorRepeat: [{ type: Input }],
+        recurrenceEditorDailyInterval: [{ type: Input }],
+        recurrenceEditorDailyRepeatEvery: [{ type: Input }],
+        recurrenceEditorWeeklyInterval: [{ type: Input }],
+        recurrenceEditorWeeklyRepeatEvery: [{ type: Input }],
+        recurrenceEditorWeeklyRepeatOn: [{ type: Input }],
+        recurrenceEditorMonthlyDay: [{ type: Input }],
+        recurrenceEditorMonthlyInterval: [{ type: Input }],
+        recurrenceEditorMonthlyRepeatEvery: [{ type: Input }],
+        recurrenceEditorMonthlyRepeatOn: [{ type: Input }],
+        recurrenceEditorYearlyOf: [{ type: Input }],
+        recurrenceEditorYearlyRepeatEvery: [{ type: Input }],
+        recurrenceEditorYearlyRepeatOn: [{ type: Input }],
+        recurrenceEditorYearlyInterval: [{ type: Input }],
+        recurrenceEditorFrequenciesDaily: [{ type: Input }],
+        recurrenceEditorFrequenciesMonthly: [{ type: Input }],
+        recurrenceEditorFrequenciesNever: [{ type: Input }],
+        recurrenceEditorFrequenciesWeekly: [{ type: Input }],
+        recurrenceEditorFrequenciesYearly: [{ type: Input }],
+        recurrenceEditorOffsetPositionsFirst: [{ type: Input }],
+        recurrenceEditorOffsetPositionsSecond: [{ type: Input }],
+        recurrenceEditorOffsetPositionsThird: [{ type: Input }],
+        recurrenceEditorOffsetPositionsFourth: [{ type: Input }],
+        recurrenceEditorOffsetPositionsLast: [{ type: Input }],
+        recurrenceEditorWeekdaysDay: [{ type: Input }],
+        recurrenceEditorWeekdaysWeekday: [{ type: Input }],
+        recurrenceEditorWeekdaysWeekendday: [{ type: Input }],
+        recurrenceEditorEndAfter: [{ type: Input }],
+        recurrenceEditorEndOccurrence: [{ type: Input }],
+        recurrenceEditorEndLabel: [{ type: Input }],
+        recurrenceEditorEndNever: [{ type: Input }],
+        recurrenceEditorEndOn: [{ type: Input }],
+        editorTitle: [{ type: Input }],
+        destroy: [{ type: Input }],
+        deleteConfirmation: [{ type: Input }],
+        editRecurringConfirmation: [{ type: Input }],
+        editOccurrence: [{ type: Input }],
+        editSeries: [{ type: Input }],
+        deleteRecurringConfirmation: [{ type: Input }],
+        deleteOccurrence: [{ type: Input }],
+        deleteSeries: [{ type: Input }],
+        deleteDialogTitle: [{ type: Input }],
+        deleteRecurringDialogTitle: [{ type: Input }],
+        editRecurringDialogTitle: [{ type: Input }]
+    };
+    return Messages;
+}(ComponentMessages));
+export { Messages };

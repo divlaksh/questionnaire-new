@@ -1,0 +1,107 @@
+$primary-background-color: #095a8a;
+$topnav-background-color: white;
+:host {
+  display: block;
+}
+
+.login-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  background: $topnav-background-color;
+  text-align: center;
+  color: blue;
+  padding: 3em;
+  .col-lg-4 {
+    padding: 0;
+  }
+  .input-lg {
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 0;
+  }
+  .input-underline {
+    background: 0 0;
+    border: none;
+    box-shadow: none;
+    border-bottom: 2px solid #4d494980;
+    color: blue;
+    border-radius: 0;
+  }
+  .input-underline:focus {
+    border-bottom: 2px solid blue;
+    box-shadow: none;
+  }
+  .rounded-btn {
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    color: #4d494980;
+    background: $topnav-background-color;
+    border: 2px solid #4d494980;
+    font-size: 18px;
+    line-height: 40px;
+    padding: 0 25px;
+  }
+  .rounded-btn:hover,
+  .rounded-btn:focus,
+  .rounded-btn:active,
+  .rounded-btn:visited {
+    color: blue;
+    border: 2px solid blue;
+    outline: none;
+  }
+  h1 {
+    font-weight: 300;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 36px;
+    small {
+      color: blue;
+    }
+  }
+  .form-group {
+    padding: 8px 0;
+    input::-webkit-input-placeholder {
+      color: blue !important;
+    }
+    input:-moz-placeholder {
+      /* Firefox 18- */
+      color: blue !important;
+    }
+    input::-moz-placeholder {
+      /* Firefox 19+ */
+      color: blue !important;
+    }
+    input:-ms-input-placeholder {
+      color: blue !important;
+    }
+  }
+  .form-content {
+    padding: 40px 0;
+  }
+  .user-avatar {
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  .btn-change {
+    // height: 50px;
+    // width: 100px;
+    background: $primary-background-color;
+    margin: 10px;
+    float: left;
+    box-shadow: 0 0 1px lightseagreen;
+    -webkit-transition: all 0.5s ease-in-out;
+    border: 0px;
+    color: #fff;
+  }
+  .btn-change:hover {
+    -webkit-transform: scale(1.1);
+    background: #31708f;
+  }
+}

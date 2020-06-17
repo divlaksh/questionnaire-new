@@ -1,0 +1,1024 @@
+<div class="card card-default" style="border: none !important;">
+  <div class="card-header card-header-ibm">
+    <div class="row">
+      <div class="col-8 pull-left">
+
+        Customer/Account Information
+      </div>
+      <div class="col-4 pull-right">
+        <div class="row pull-right">
+          <div *ngIf="isSearchPage && isToggleSearchClicked">
+            <form [formGroup]="searchForm">
+              <div class="row">
+                <div>
+                  <input formControlName="searchFormId" type="text" class="form-control form-control-sm pull-left" placeholder="Enter Form Id to Search">
+                </div>
+                <div style="padding-right: 10px; padding-top: 3px;">
+                  <i (click)="SearchFormById()" [(ngModel)]="searchFormText" class="fa fa-search  pull-right icon-20" style="padding-right: 5px; " aria-hidden="true"></i>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div *ngIf="isSearchPage">
+            <i *ngIf="!isToggleSearchClicked" (click)="toggleSearch()" class="fa fa-search  pull-right icon-20" style="padding-right: 5px; padding-top: 3px;" aria-hidden="true"></i>
+            <i *ngIf="isToggleSearchClicked" (click)="closeSearch()" class="fa fa-times-circle-o pull-right icon-20" style="padding-right: 5px; padding-top: 3px;" aria-hidden="true"></i>
+          </div>
+          <!-- <div *ngIf="!isSearchPage" style="padding-top: 3px !important;">
+            NBIE &nbsp;
+            <ui-switch [disabled]="isView && userType !== requestor" size="small" switchColor="#fcfcfc" defaultBgColor="red" [checked]="isNbie"
+              (change)="nbieSelected($event)"></ui-switch>
+          </div> -->
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <form [formGroup]="detailsForm" class="padding-bottom-form">
+    <div class="row">
+      <div class="col-xl-4 col-lg-4">
+        <div class="form-group ibm-form-group-field has-danger">
+          <select [attr.disabled]="isView ? '' : null" formControlName="deal" id="deal" class="form-control form-control-sm">
+            <option value="" [attr.selected]="true">Select Deal</option>
+            <option *ngFor="let deal of deals" value="{{deal.id}}">{{deal.value}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-xl-6 col-lg-6">
+        <!-- <div class="row">
+          <div class="col-xl-10 col-lg-10">
+            <input [ngClass]="{'is-invalid': detailsFormSubmitted && df.formId.errors}" readonly formControlName="formId" id="formId"
+              type="text" name="formId" class="form-control form-control-sm" placeholder="Enter Form ID" data-error="Form Id is required.">
+          </div>
+          <div class="col-xl-1 col-lg-1">
+            <i *ngIf="!isToggleSearchClicked" (click)="toggleSearch()" class="fa fa-search  pull-right icon-20" style="padding-right: 5px; padding-top: 3px;"
+              aria-hidden="true"></i>
+            <i *ngIf="isToggleSearchClicked" (click)="closeSearch()" class="fa fa-times-circle-o pull-right icon-20" style="padding-right: 5px; padding-top: 3px;"
+              aria-hidden="true"></i>
+          </div>
+        </div> -->
+      </div>
+      <div *ngIf="!isSearchPage" class="col-xl-2 col-lg-2 text-right">
+        NBIE &nbsp;
+        <ui-switch [disabled]="isView && userType !== requestor" size="small" switchColor="#fcfcfc" defaultBgColor="red" [checked]="isNbie" (change)="nbieSelected($event)"></ui-switch>
+      </div>
+    </div>
+    <div class="row  border-primary" style="padding-top: 10px !important;">
+      <!-- details card 1 starts here -->
+      <div class="col-xl-4 col-lg-4">
+        <div class="card card-default customer-detail-inner-card border-primary">
+          <div class="card-header card-header-ibm">
+          </div>
+          <div class="card-body p-1 m-1">
+            <div class="form-group ibm-form-group-field has-danger">
+              <label class="field-label ibm-text-color" for="formId">Form ID #</label>
+              <input [ngClass]="{'is-invalid': detailsFormSubmitted && df.formId.errors}" readonly formControlName="formId" id="formId" type="text" name="formId" class="form-control form-control-sm"
+                placeholder="Enter Form ID" data-error="Form Id is required.">
+            </div>
+            <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="formStatus">Form Status</label>
+              <input [ngClass]="{'is-invalid': detailsFormSubmitted && df.formStatus.errors}" readonly formControlName="formStatus" id="formStatus" type="text" name="email"
+                class=" form-control form-control-sm" placeholder="Enter Form Status" data-error="Valid email is required.">
+            </div>
+            <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="requestorName">Requestor</label>
+              <input [ngClass]="{'is-invalid': detailsFormSubmitted && df.requestorName.errors}" readonly formControlName="requestorName" id="requestorName" type="text" name="phone"
+                class="form-control form-control-sm" placeholder="Enter Requestor">
+            </div>
+            <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="requestorId">Requestor ID</label>
+              <input [ngClass]="{'is-invalid': detailsFormSubmitted && df.requestorId.errors}" readonly formControlName="requestorId" id="requestorId" type="text" name="phone"
+                class="form-control form-control-sm" placeholder="Requestor ID">
+            </div>
+            <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="riskRating">Risk Rating</label>
+              <select [attr.disabled]="isView ? '' : null" [ngClass]="{'is-invalid': detailsFormSubmitted && df.riskRating.errors}" formControlName="riskRating" id="riskRating"
+                class="form-control form-control-sm" data-error="Risk Rating is required.">
+                <option value="" [attr.selected]="true">Select Risk Rating</option>
+                <option *ngFor="let riskRate of riskRatings" value="{{riskRate.id}}">{{riskRate.value}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- details card 1 ends here -->
+      <!-- details card 2 starts here -->
+      <div class="col-xl-4 col-lg-4">
+        <div class="card card-default customer-detail-inner-card border-primary">
+          <div class="card-header card-header-ibm">
+          </div>
+          <div class="card-body p-1 m-1">
+            <div class="form-group ibm-form-group-field ibm-form-group-date-picker">
+              <label class="field-label ibm-text-color" for="datePrepared">Date Prepared</label>
+              <my-date-picker [disabled]="isView" formControlName="datePrepared" [ngClass]="{'is-invalid': detailsFormSubmitted && df.datePrepared.errors}" name="datePrepared"
+                [options]="myDatePickerOptions" [(ngModel)]="datePreparedModel"></my-date-picker>
+            </div>
+            <div class="form-group ibm-form-group-field ibm-form-group-date-picker">
+              <label class="field-label ibm-text-color" for="validTo">Valid To</label>
+              <my-date-picker [disabled]="isView" formControlName="validTo" [ngClass]="{'is-invalid': detailsFormSubmitted && df.validTo.errors}" name="validTo" [options]="myDatePickerOptions"
+                [(ngModel)]="validToModel"></my-date-picker>
+            </div>
+            <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="form_phone">Sales Connect #</label>
+              <input [attr.disabled]="isView ? '' : null" [ngClass]="{'is-invalid': detailsFormSubmitted && df.salesConnectNo.errors}" formControlName="salesConnectNo" id="salesConnectNo" type="tel"
+                name="phone" [ngClass]="{'red-border-class': df.salesConnectNo.errors}" class=" form-control form-control-sm text-line" placeholder="Enter Sales Connect #">
+            </div>
+            <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="rfsNo">RFS #</label>
+              <input [attr.disabled]="isView ? '' : null" formControlName="rfsNo" [ngClass]="{'is-invalid': detailsFormSubmitted && df.rfsNo.errors}" id="rfsNo" type="tel" name="phone"
+                class="form-control form-control-sm" placeholder="Enter RFS #">
+            </div>
+            <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="deliveryLocation">Delivery Location</label>
+              <select [ngClass]="{'is-invalid': detailsFormSubmitted && df.deliveryLocation.errors}" [attr.disabled]="isView ? '' : null" formControlName="deliveryLocation" id="region"
+                class="form-control form-control-sm" data-error="Delivery Location is required.">
+                <option value="" [attr.selected]="true">Select Delivery Location</option>
+                <option *ngFor="let location of deliveryLocationList" value="{{location.locationCode}}">{{location.locationName}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- details card 2 ends here -->
+      <!-- details card 3 starts here -->
+      <div class="col-xl-4 col-lg-4">
+        <div class="card card-default customer-detail-inner-card border-primary">
+          <div class="card-header card-header-ibm">
+          </div>
+          <div class="card-body p-1 m-1">
+            <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="form_name">Customer/Account Name</label>
+              <input [attr.disabled]="isView ? '' : null" formControlName="customerName" [ngClass]="{'is-invalid': detailsFormSubmitted && df.customerName.errors}" id="customerName" type="text"
+                name="customerName" class="form-control form-control-sm" placeholder="Enter Customer/Account Name">
+            </div>
+            <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="customerId">Customer ID</label>
+              <input [attr.disabled]="isView ? '' : null" formControlName="customerId" [ngClass]="{'is-invalid': detailsFormSubmitted && df.customerId.errors}" id="customerId" type="text"
+                name="customerId" class="form-control form-control-sm" placeholder="Enter Customer Id">
+            </div>
+            <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="salesId">Sales ID</label>
+              <input [attr.disabled]="isView ? '' : null" formControlName="salesId" [ngClass]="{'is-invalid': detailsFormSubmitted && df.salesId.errors}" id="salesId" type="text" name="salesId"
+                class="form-control form-control-sm" placeholder="Enter Sales Id">
+            </div>
+            <!-- <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="approver">Approver</label>
+              <select [attr.disabled]="isView ? '' : null" formControlName="approver" [ngClass]="{'is-invalid': detailsFormSubmitted && df.approver.errors}"
+                id="approver" class="form-control form-control-sm">
+                <option value="" [attr.selected]="true">Select Approver</option>
+                <option *ngFor="let user of approverList" value="{{user.username}}">{{user.fullName}}</option>
+              </select>
+            </div> -->
+            <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="custom">Custom</label>
+              <select [attr.disabled]="isView ? '' : null" formControlName="custom" [ngClass]="{'is-invalid': detailsFormSubmitted && df.custom.errors}" id="custom"
+                class="form-control form-control-sm">
+                <option value="" [attr.selected]="true">Select Custom</option>
+                <option value="YES">YES</option>
+                <option value="NO">NO</option>
+              </select>
+
+            </div>
+            <div class="form-group ibm-form-group-field">
+              <label class="field-label ibm-text-color" for="custom">IOT</label>
+
+              <!-- <ng-select class="custom" [multiple]="true" [items]="accounts" bindLabel="name" bindValue="name" groupBy="country" [(ngModel)]="selectedAccount">
+              </ng-select> -->
+
+              <!-- <ng-multiselect-dropdown class="form-control form-control-sm" style="padding: 0px 0px !important;" [data]="dropdownList"
+                [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+              </ng-multiselect-dropdown> -->
+
+              <ng-multiselect-dropdown [disabled]="isView" [placeholder]="'Select Regions'" [data]="regionList" [(ngModel)]="selectedRegions" [ngModelOptions]="{standalone: true}"
+                [settings]="regionSelectConfig" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+              </ng-multiselect-dropdown>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- details card 2 ends here -->
+    </div>
+
+    <br>
+
+    <!-- card 2 starts here -->
+    <div class="card card-default border-primary ">
+      <div class="card-body p-1 m-1">
+
+        <div class="col-xl-12 col-lg-12" style="padding-left: 1px !important;padding-right: 1px !important;">
+          <div class="row  border-primary">
+            <div style="overflow-x: auto; margin-left:15px; margin-right:15px;">
+              <table class="table coe-table borderless text-primary">
+                <thead>
+                  <tr>
+                    <td *ngIf="!isView" class="field-label ibm-text-color" title="Action" style="width: 5% !important;"></td>
+                    <td class="field-label ibm-text-color" title="COE" style="width: 5% !important;">COE</td>
+                    <td class="field-label ibm-text-color" title="Contract Type" style="width: 5% !important;">Type</td>
+                    <td class="field-label ibm-text-color" title="Contract Duration in Days" style="width: 5% !important;">Duration</td>
+                    <td class="field-label ibm-text-color" title="Technology" style="width: 5% !important;">Technology</td>
+                    <td class="field-label ibm-text-color" title="Service Window for Operations" style="width: 5% !important;">Window</td>
+                    <td class="field-label ibm-text-color" title="Service Scope" style="width: 5% !important;">Scope</td>
+                    <td class="field-label ibm-text-color" title="Product" style="width: 5% !important;">Vendor</td>
+                    <td class="field-label ibm-text-color" title="Number Of Servers" style="width: 5% !important;">Units</td>
+                    <td class="field-label ibm-text-color" title="Nunber Of Consoles" style="width: 5% !important;">Consoles</td>
+
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="Service Scope" style="width: 5% !important;">On Call</td>
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="Product" style="width: 5% !important;">B7</td>
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="No Of Servers" style="width: 5% !important;">B5</td>
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="B6a" style="width: 5% !important;">B6a</td>
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="b6b" style="width: 5% !important;">B6b</td>
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="b8" style="width: 5% !important;">B8</td>
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="FTE" style="width: 5% !important;">FTE</td>
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="Travel" style="width: 5% !important;">Travel</td>
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="Calc" style="width: 5% !important;"></td>
+
+
+
+                  </tr>
+                </thead>
+                <tbody formArrayName="services">
+                  <tr *ngFor="let service of serviceFormGroup.controls; let i = index;" [formGroupName]="i">
+                    <td *ngIf="!isView" class="field-label ibm-text-color" style="width: 5% !important; padding-top: 10px !important; font-size: 15px !important;">
+                      <i *ngIf="!(serviceList.length === 1 && i === 0) && !isView" class="fa fa-minus" aria-hidden="true" title="Remove item" (click)="removeService(i)"></i>
+                      &nbsp;
+                      <i *ngIf="maxFormIndex === i && !isView" class="fa fa-plus" aria-hidden="true" title="Click to add more" (click)="addService()"></i>
+                    </td>
+
+                    <td class="field-label ibm-text-color" title="COE" style="width: 5% !important;">
+                      <select formControlName="coe" [attr.disabled]="isView ? '' : null" id="coe" class="form-control form-control-sm" (change)="coeChanged(i)">
+                        <option value="">Select</option>
+
+                        <option *ngFor="let coeItem of coesList" value="{{coeItem.code}}" [attr.selected]="coeItem.code === service.get('coe').value ? '' : null">{{coeItem.name}}</option>
+                      </select>
+                    </td>
+
+                    <td class="field-label ibm-text-color" title="Contract Type" style="width: 5% !important;">
+                      <select formControlName="contractType" [attr.disabled]="isView ? '' : null " id="contractType" class="form-control form-control-sm" (change)="coeChanged(i)">
+                        <option value="">Select</option>
+                        <option *ngFor="let contractType of contractTypes" value="{{contractType.code}}" [attr.selected]="contractType.code === service.get('contractType').value ? '' : null">
+                          {{contractType.description}}</option>
+                      </select>
+                    </td>
+
+                    <td class="field-label ibm-text-color" title="Contract Duration" style="width: 5% !important;">
+                      <input formControlName="contractDuration" [attr.disabled]="isView ? '' : null " id="contractDuration" class="form-control form-control-sm " type="text">
+                    </td>
+
+                    <td class="field-label ibm-text-color" title="Technology" style="width: 5% !important;">
+                      <select formControlName="endPoint" [attr.disabled]="isView ? '' : null " id="coe" class="form-control form-control-sm" (change)="endPointChanged(i)">
+                        <option value="">Select</option>
+                        <option *ngFor="let endpoint of filterEndpointList" value="{{endpoint.code}}" [attr.selected]="endpoint.code === service.get('endPoint').value ? '' : null">{{endpoint.name}}
+                        </option>
+
+                      </select>
+                    </td>
+
+                    <td class="field-label ibm-text-color" title="Service Window for Operations" style="width: 5% !important;">
+                      <select formControlName="serviceWindow" [attr.disabled]="isView ? '' : null " id="serviceWindow" class="form-control form-control-sm">
+                        <option value="">Select</option>
+                        <option *ngFor="let serviceOperation of serviceOperations" value="{{serviceOperation.code}}"
+                          [attr.selected]="serviceOperation.code === service.get('serviceWindow').value ? '' : null">{{serviceOperation.name}}</option>
+                      </select>
+                    </td>
+
+                    <td class="field-label ibm-text-color" title="Service Scope" style="width: 5% !important;">
+                      <select formControlName="serviceScope" [attr.disabled]="isView ? '' : null " id="serviceScope" class="form-control form-control-sm" (change)="scopeChanged(i)">
+                        <option value="">Select</option>
+                        <option *ngFor="let serviceScope of filterServiceScopes" value="{{serviceScope.code}}" [attr.selected]="serviceScope.code === service.get('serviceScope').value ? '' : null">
+                          {{serviceScope.name}}</option>
+                      </select>
+                    </td>
+                    <td class="field-label ibm-text-color" title="Vendor" style="width: 5% !important;">
+                      <select formControlName="vendor" [attr.disabled]="isView ? '' : null " id="vendor" class="form-control form-control-sm ">
+                        <option value="">Select</option>
+                        <option *ngFor="let vendor of filterVendorList;" value="{{vendor.id}}" [attr.selected]="vendor.id === service.get('vendor').value ? '' : null">{{vendor.name}}</option>
+                      </select>
+                    </td>
+
+                    <td class="field-label ibm-text-color" title="Number Of Servers" style="width: 5% !important;">
+                      <input formControlName="noOfServers" [attr.disabled]="isView ? '' : null " id="noOfServers" class="form-control form-control-sm " type="text">
+                    </td>
+
+                    <td class="field-label ibm-text-color" title="Number Of Consoles" style="width: 5% !important;">
+                      <input formControlName="noOfConsoles" [attr.disabled]="isView ? '' : null " id="noOfConsoles" class="form-control form-control-sm " type="text">
+                    </td>
+
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="On Call" style="width: 5% !important;">
+                      <input formControlName="onCallText" [attr.disabled]="(isView  || userType === requestor ) ? '' : null " id="onCallText" class="form-control form-control-sm " type="text">
+                    </td>
+
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="B7" style="width: 5% !important;">
+                      <input formControlName="b7Text" [attr.disabled]="(isView || userType === requestor ) ? '' : null " id="b7Text" class="form-control form-control-sm " type="text">
+                    </td>
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="B5" style="width: 5% !important;">
+                      <input formControlName="b5Text" [attr.disabled]="(isView|| userType === requestor ) ? '' : null  " id="b5Text" class="form-control form-control-sm " type="text">
+                    </td>
+
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="B6a" style="width: 5% !important;">
+                      <input formControlName="b6aText" [attr.disabled]="(isView) ? '' : null  " id="b5Text" class="form-control form-control-sm " type="text">
+                    </td>
+
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="B6b" style="width: 5% !important;">
+                      <input formControlName="b6bText" [attr.disabled]="(isView) ? '' : null  " id="b5Text" class="form-control form-control-sm " type="text">
+                    </td>
+
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="B8" style="width: 5% !important;">
+                      <input formControlName="b8Text" [attr.disabled]="(isView) ? '' : null  " id="b5Text" class="form-control form-control-sm " type="text">
+                    </td>
+
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="FTE" style="width: 5% !important;">
+                      <input formControlName="fteText" [attr.disabled]="(isView  || userType === requestor ) ? '' : null  " id="fteText" class="form-control form-control-sm " type="text">
+                    </td>
+
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="Travel" style="width: 5% !important;">
+                      <select formControlName="travel" [attr.disabled]="isView ? '' : null " id="serviceWindow" class="form-control form-control-sm">
+                        <option value="0" [attr.selected]="0 === service.get('travel').value ? '' : null">0</option>
+                        <option value="1" [attr.selected]="1 === service.get('travel').value ? '' : null">1</option>
+                        <option value="2" [attr.selected]="2 === service.get('travel').value ? '' : null">2</option>
+                        <option value="3" [attr.selected]="3 === service.get('travel').value ? '' : null">3</option>
+                        <option value="4" [attr.selected]="4 === service.get('travel').value ? '' : null">4</option>
+                        <option value="5" [attr.selected]="5 === service.get('travel').value ? '' : null">5</option>
+                        <option value="6" [attr.selected]="6 === service.get('travel').value ? '' : null">6</option>
+                        <option value="7" [attr.selected]="7 === service.get('travel').value ? '' : null">7</option>
+                        <option value="8" [attr.selected]="8 === service.get('travel').value ? '' : null">8</option>
+                        <option value="9" [attr.selected]="9 === service.get('travel').value ? '' : null">9</option>
+                        <option value="10" [attr.selected]="10 === service.get('travel').value ? '' : null">10</option>
+
+                      </select>
+                    </td>
+
+                    <td *ngIf="userType === tsaType" class="field-label ibm-text-color" title="Calc" style="width: 5% !important;">
+                      <button class="btn btn-fill btn-sm btn-block btn-change-in-row" (click)="calcClicked(i)"> Calc </button>
+                    </td>
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="userType === requestor || (!!documentList && documentList.length > 0)" class="card card-default border-primary ">
+      <div class="card-body p-1 m-1">
+
+        <div class="col-xl-12 col-lg-12" style="padding-left: 1px !important;padding-right: 1px !important;">
+          <div class="row  border-primary">
+
+            <div *ngIf="userType === requestor" class="col-lg-2 col-md-2 text-left">
+              <div class="form-group ibm-form-group-field col-2">
+                <label class="field-label ibm-text-color">Comment</label>
+              </div>
+            </div>
+            <div *ngIf="userType === requestor" class="col-lg-10 col-md-10">
+              <div class="form-group ibm-form-group-field">
+                <textarea class="form-control form-control-sm border-primary" cols="80" formControlName="documentComment"></textarea>
+              </div>
+            </div>
+            <div *ngIf="userType === requestor" class="col-lg-2 col-md-2 text-left">
+
+            </div>
+            <div *ngIf="userType === requestor" class=" row col-lg-10 col-md-10">
+              <div class="form-group ibm-form-group-field col-4">
+                <input formControlName="documentName" class="form-control form-control-sm border-primary" type="text" placeholder="Enter document name" />
+              </div>
+              <div class="form-group ibm-form-group-field col-4 ibm-text-color">
+                <input #myInputFile type="file" name="uploadFile" (change)="selectFile($event)" />
+              </div>
+            </div>
+            <div *ngIf="userType === requestor" class="col-lg-12 col-md-12 col-sm-12  text-right ibm-text-color">
+
+              <button class="btn btn-sm btn-primary btn-fill" (click)="upload()">Upload</button>
+
+            </div>
+            <div *ngIf="!!documentList && documentList.length > 0;" class="col-lg-12" style="padding-top: 10px !important;">
+
+              <ul class="list-group ibm-text-color">
+                <li *ngFor="let document of documentList; let i = index;" class="list-group-item document-list-item field-label">
+                  <a href="{{downloadDocumentURL}}?id={{document.id}}">{{document.fileName}}</a>
+
+                  <i *ngIf="userType === requestor" class="fa fa-trash icon-20 pull-right ibm-text-color" aria-hidden="true" (click)="deleteDocument(i)"></i>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <pre>{{this.detailsForm.value | json}}</pre> -->
+  </form>
+
+  <!-- card 2 ends here -->
+  <br>
+  <!-- run estimator card starts here -->
+  <div *ngIf="userType !== tsaType && (userType !== requestor || (isNbie && userType === requestor))" class="card card-default border-primary">
+    <form [formGroup]="estimatorForm" class="padding-bottom-form">
+      <div class="card-body p-1 m-1">
+
+        <div class="col-xl-12 col-lg-12" style="padding-left: 1px !important;padding-right: 1px !important;">
+          <div class="row">
+            <div class="col-xl-5 col-lg-5"></div>
+            <div class="col-xl-2 col-lg-2">
+              <button *ngIf="userType !== approverType" class="btn btn-block btn-sm btn-change" (click)="runEstimate()">Run Estimator</button>
+            </div>
+            <div class="col-xl-5 col-lg-5"></div>
+          </div>
+          <div class="row" style="padding-left: 50px !important;">
+            <div class="col-xl-2 col-lg-2"></div>
+            <div class="col-xl-8 col-lg-8">
+              <div class="card border-primary">
+                <table class="table p-5 borderless text-primary">
+                  <thead style="border: none !important;">
+                    <tr class="text-center">
+                      <th scope="col" class="field-label ibm-text-color" style="width: 15% !important;"></th>
+                      <th scope="col" class="field-label ibm-text-color" title="Transition and Transformation">Transition and Transformation</th>
+                      <th scope="col" class="field-label ibm-text-color">Steady State Band</th>
+                      <th scope="col" class="field-label ibm-text-color">Hour</th>
+                      <th scope="col" class="field-label ibm-text-color">Cost</th>
+                    </tr>
+                  </thead>
+                  <tbody style="border: none !important;">
+                    <tr>
+                      <th class="field-label ibm-text-color text-right">B5</th>
+                      <td>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="b5Tnt" [ngClass]="{'is-invalid': detailsFormSubmitted && df.b5Tnt.errors}" id="b5Tnt" type="text" name="b5Tnt"
+                          class="form-control form-control-sm ">
+                      </td>
+                      <td>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="b5Ssb" [ngClass]="{'is-invalid': detailsFormSubmitted && df.b5Ssb.errors}" id="b5Ssb" type="text" name="b5Ssb"
+                          class="form-control form-control-sm ">
+                      </td>
+                      <td>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="b5Hour" [ngClass]="{'is-invalid': detailsFormSubmitted && df.b5Hour.errors}" id="b5Hour" type="text" name="b5Hour"
+                          class="form-control form-control-sm ">
+                      </td>
+                      <td>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="b5Cost" [ngClass]="{'is-invalid': detailsFormSubmitted && df.b5Cost.errors}" id="b5Cost" type="text" name="b5Cost"
+                          class="form-control form-control-sm ">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="field-label ibm-text-color text-right">B7</th>
+                      <td>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="b7Tnt" [ngClass]="{'is-invalid': detailsFormSubmitted && df.b7Tnt.errors}" id="b7Tnt" type="text" name="b7Tnt"
+                          class="form-control form-control-sm ">
+                      </td>
+                      <td>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="b7Ssb" [ngClass]="{'is-invalid': detailsFormSubmitted && df.b7Ssb.errors}" id="b7Ssb" type="text" name="b7Ssb"
+                          class="form-control form-control-sm ">
+                      </td>
+                      <td>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="b7Hour" [ngClass]="{'is-invalid': detailsFormSubmitted && df.b7Hour.errors}" id="b7Hour" type="text" name="b7Hour"
+                          class="form-control form-control-sm ">
+                      </td>
+                      <td>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="b7Cost" [ngClass]="{'is-invalid': detailsFormSubmitted && df.b7Cost.errors}" id="b7Cost" type="text" name="b7Cost"
+                          class="form-control form-control-sm ">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="field-label ibm-text-color text-right">B7 On Call</th>
+                      <td>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="b7OnCallTnt" [ngClass]="{'is-invalid': detailsFormSubmitted && df.b7OnCallTnt.errors}" id="b7OnCallTnt" type="text"
+                          name="b7OnCallTnt" class="form-control form-control-sm ">
+                      </td>
+                      <td>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="b7OnCallSsb" [ngClass]="{'is-invalid': detailsFormSubmitted && df.b7OnCallSsb.errors}" id="b7OnCallSsb" type="text"
+                          name="b7OnCallSsb" class="form-control form-control-sm ">
+                      </td>
+
+                      <td>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="b7OnCallHour" [ngClass]="{'is-invalid': detailsFormSubmitted && df.b7OnCallHour.errors}" id="b7OnCallHour"
+                          type="text" name="b7OnCallHour" class="form-control form-control-sm ">
+                      </td>
+                      <td>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="b7OnCallCost" [ngClass]="{'is-invalid': detailsFormSubmitted && df.b7OnCallCost.errors}" id="b7OnCallCost"
+                          type="text" name="b7OnCallCost" class="form-control form-control-sm ">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="field-label ibm-text-color text-right">Total</th>
+                      <th>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="totalTnt" [ngClass]="{'is-invalid': detailsFormSubmitted && df.totalTnt.errors}" id="totalTnt" type="text"
+                          name="totalTnt" class="form-control form-control-sm ">
+                      </th>
+                      <th>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="totalSsb" [ngClass]="{'is-invalid': detailsFormSubmitted && df.totalSsb.errors}" id="totalSsb" type="text"
+                          name="totalSsb" class="form-control form-control-sm ">
+                      </th>
+                      <th>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="totalHour" [ngClass]="{'is-invalid': detailsFormSubmitted && df.totalHour.errors}" id="totalHour" type="text"
+                          name="totalHour" class="form-control form-control-sm ">
+                      </th>
+                      <th>
+                        <input [attr.disabled]="isView ? '' : null" formControlName="totalCost" [ngClass]="{'is-invalid': detailsFormSubmitted && df.totalCost.errors}" id="totalCost" type="text"
+                          name="totalCost" class="form-control form-control-sm ">
+                      </th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-2"></div>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- run estimator card ends here -->
+
+  <br>
+  <!-- <div class="row" *ngIf="userType === requestor">
+    <div class="col-lg-12 col-xl-12">
+      <input type="checkbox" (click)="agreeClicked()" />
+      <span class="field-label ibm-text-color iAgree" (click)="showDisclaimer(disclaimerModal)">Disclaimer and I Agree</span>
+    </div>
+  </div> -->
+</div>
+
+<div *ngIf="isNbie && userType === requestor" class="row col-lg-12 col-xl-12" style="padding-left: 0px !important;padding-right: 0px !important;">
+  <div class="col-lg-3 text-center">
+    <button [routerLink]="['/form-list', 'true']" class="btn btn-fill btn-sm btn-block btn-change">Click here to go home page</button>
+  </div>
+  <div class="col-lg-2 text-center">
+    <button class="btn btn-fill btn-sm btn-block btn-change" (click)="openTermsAndConditions(termsAndConditonModel)">Terms & Conditions</button>
+  </div>
+  <div class="col-lg-3 text-center">
+    <button type="button" class="btn btn-fill btn-sm btn-block btn-change" (click)="preview(previewModal)">
+      Click here to preview
+    </button>
+  </div>
+
+  <div class="col-lg-2 text-center">
+    <button [disabled]="isView || userType !== requestor " class="btn btn-fill btn-sm btn-block btn-change" (click)="saveForm()">Submit Form</button>
+  </div>
+
+  <div class="col-lg-2 text-center">
+    <button [disabled]="isView " class="btn btn-fill btn-sm btn-block btn-change" (click)="selfApprovalByrequestor()">Self Approval</button>
+  </div>
+
+</div>
+
+<div *ngIf="!(isNbie && userType === requestor)" class="row col-lg-12 col-xl-12" style="padding-left: 0px !important;padding-right: 0px !important;">
+  <div class="col-lg-3 text-center">
+    <button [routerLink]="['/form-list', 'true']" class="btn btn-fill btn-sm btn-block btn-change">Click here to go home page</button>
+  </div>
+  <div class="col-lg-3 text-center">
+    <button [disabled]="userType === requestor && !isNbie" class="btn btn-fill btn-sm btn-block btn-change" (click)="openTermsAndConditions(termsAndConditonModel)">Terms & Conditions</button>
+  </div>
+  <div class="col-lg-3 text-center">
+    <button type="button" class="btn btn-fill btn-sm btn-block btn-change" (click)="preview(previewModal)">
+      Click here to preview
+    </button>
+  </div>
+
+  <div class="col-lg-3 text-center">
+    <button *ngIf="userType !== tsaType" [disabled]="isView || userType !== requestor " class="btn btn-fill btn-sm btn-block btn-change" (click)="saveForm()">Submit Form</button>
+    <button *ngIf="userType=== tsaType" [disabled]="isView" class="btn btn-fill btn-sm btn-block btn-change" (click)="sendForApproval()">Send for Approval</button>
+
+  </div>
+</div>
+
+<br>
+
+
+<ng-template #disclaimerModal let-modal>
+  <div class="modal-header card-header-ibm">
+    <h4 class="modal-title" id="modal-basic-title">Disclaimer</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="font-size: 12px;">
+
+    <div class="card-content p-2">
+      <div>
+        dsfsfsfda
+      </div>
+
+    </div>
+
+
+  </div>
+  <div class="modal-footer">
+    <div class="row col-md-12 col-lg-12 col-xl-12">
+      <div class="col-md-12 col-lg-12 col-xl-12">
+        <button type="button" class="btn btn-outline-primary btn-sm btn-primary-ibm pull-right" (click)="modal.close('close click')">Close</button>
+
+      </div>
+
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #termsAndConditonModel let-modal>
+  <div class="modal-header card-header-ibm">
+    <h4 class="modal-title" id="modal-basic-title">Terms & Conditions</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="font-size: 12px;">
+    <div *ngIf="!editTermsAndConditionsClicked">
+      <div *ngFor="let termCondition of termsList; let i = index;" class="card m-2">
+        <div *ngIf="!!termCondition" class="card-header">
+          <div class="row">
+            <div class="col-md-6 col-lg-6 col-xl-6">
+              {{termCondition.description}}
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-6 text-right">
+              <i *ngIf="userType === tsaType && !isView" class="fa fa-pencil-square-o icon-ibm icon-20" aria-hidden="true" (click)="editTermsAndCondition( i)"></i>
+            </div>
+          </div>
+
+        </div>
+        <div *ngIf="!!termCondition" class="card-content p-2">
+          <div [innerHtml]="termCondition.termsAndCondition">
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- <div *ngIf="!editTermsAndConditionsClicked" [innerHtml]="termsAndConditions.termsAndCondition">
+    </div> -->
+    <div *ngIf="editTermsAndConditionsClicked" class="form-group">
+      <form [formGroup]="termsAndConditionForm">
+        <quill-editor formControlName="termsAndCondition" [(ngModel)]="editorContent" [options]="editorOptions" (blur)="onEditorBlured($event)" (focus)="onEditorFocused($event)"
+          (ready)="onEditorCreated($event)" (change)="onContentChanged($event)"></quill-editor>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="row col-md-12 col-lg-12 col-xl-12">
+      <div class="col-md-6 col-lg-6 col-xl-6 text-left">
+        <button type="button" class="btn btn-outline-primary btn-sm btn-primary-ibm" (click)="modal.close('Save click')" (click)="closeTermAndCondition()">Close</button>
+        <!-- &nbsp;
+        <button [disabled]="userType !== tsaType" *ngIf="!editTermsAndConditionsClicked && !isView" type="button" class="btn btn-outline-primary btn-sm btn-primary-ibm"
+          (click)="editTermsAndConditions()">Edit</button> -->
+
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-6 text-right">
+        <button *ngIf="editTermsAndConditionsClicked && !isView" type="button " class="btn btn-outline-primary btn-sm  btn-primary-ibm" (click)="saveTermsAndConditions()">Save</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #previewModal let-modal>
+  <div class="modal-header card-header-ibm">
+    <h4 class="modal-title" id="modal-basic-title">{{detailsForm.get('formId').value}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="font-size: 12px;">
+    <div class="card card-default card-border-none">
+      <div class="row text-center">
+        <div class="col-xl-12 col-lg-12">
+          <img src="./assets/images/Security.png">
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="row text-center">
+        <div class="col-xl-12 col-lg-12" style="font-size: 15px;">
+          <b>Infrastructure and Endpoint Security Sizing Worksheet</b>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="card card-default">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12">
+          <table class="table-bordered border-primary" style="width: 100% !important;">
+            <thead style="width: 100% !important;">
+              <td class="table-header-td" colspan="4">
+                <b>Customer Details</b>
+              </td>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="table-key-td">
+                  Customer/Account Name:
+                </td>
+                <td class="table-data-td" colspan="3">
+                  {{detailsForm.controls['customerName'].value}}
+                </td>
+              </tr>
+              <tr>
+                <td class="table-key-td">
+                  Date Prepared:
+                </td>
+                <td class="table-data-td" colspan="3">
+                  {{!!datePreparedValue ? datePreparedValue : detailsForm.controls['datePrepared'].value['formatted']}}
+                </td>
+              </tr>
+              <tr>
+                <td class="table-key-td">
+                  Estimate Valid Untill:
+                </td>
+                <td class="table-data-td" colspan="3">
+                  {{!!validToValue ? validToValue : detailsForm.controls['validTo'].value['formatted']}}
+                </td>
+              </tr>
+              <tr>
+                <td class="table-key-td">
+                  Sales Connect #:
+                </td>
+                <td class="table-data-td" colspan="3">
+                  {{detailsForm.controls['salesConnectNo'].value}}
+                </td>
+              </tr>
+              <tr>
+                <td class="table-key-td">
+                  RFS #:
+                </td>
+                <td class="table-data-td" colspan="3">
+                  {{detailsForm.controls['rfsNo'].value}}
+                </td>
+              </tr>
+              <tr>
+                <td class="table-key-inner-td">
+                  Prepared By:
+                </td>
+                <td class="table-data-td" style="width: 45%;">
+                  {{detailsForm.controls['requestorName'].value}}
+                </td>
+                <td class="table-key-inner-td">
+                  Region:
+                </td>
+                <td class="table-data-td">
+                  {{detailsForm.controls['region'].value}}
+                </td>
+              </tr>
+              <tr>
+                <td class="table-key-td">
+                  Risk Rating:
+                </td>
+                <td class="table-data-td" style="width: 45%;">
+                  {{detailsForm.controls['riskRating'].value}}
+                </td>
+                <td class="table-key-inner-td">
+                  Custom:
+                </td>
+                <td class="table-data-td">
+                  {{detailsForm.controls['custom'].value}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <table class="table-bordered border-primary" style="width: 100% !important;">
+            <thead style="width: 100% !important; background-color: #f5c773 !important;" class="text-center">
+              <td class="table-service-sub-header-td" style="background-color: #f5c773">
+                <b>COE</b>
+              </td>
+              <td class="table-service-sub-header-td">
+                <b>Type</b>
+              </td>
+              <td class="table-service-sub-header-td">
+                <b>Duration</b>
+              </td>
+              <td class="table-service-sub-header-td">
+                <b>Technology</b>
+              </td>
+              <td class="table-service-sub-header-td">
+                <b>Window</b>
+              </td>
+              <td class="table-service-sub-header-td">
+                <b>Scope</b>
+              </td>
+              <td class="table-service-sub-header-td">
+                <b>Vendor</b>
+              </td>
+              <td class="table-service-sub-header-td">
+                <b>Units</b>
+              </td>
+              <td class="table-service-sub-header-td">
+                <b>Consoles</b>
+              </td>
+              <td *ngIf="userType === tsaType" class="table-service-sub-header-td">
+                <b>On Call</b>
+              </td>
+              <td *ngIf="userType === tsaType" class="table-service-sub-header-td">
+                <b>B7</b>
+              </td>
+              <td *ngIf="userType === tsaType" class="table-service-sub-header-td">
+                <b>B5</b>
+              </td>
+              <td *ngIf="userType === tsaType" class="table-service-sub-header-td">
+                <b>B6a</b>
+              </td>
+              <td *ngIf="userType === tsaType" class="table-service-sub-header-td">
+                <b>B6b</b>
+              </td>
+              <td *ngIf="userType === tsaType" class="table-service-sub-header-td">
+                <b>B8</b>
+              </td>
+              <td *ngIf="userType === tsaType" class="table-service-sub-header-td">
+                <b>FTE</b>
+              </td>
+              <td *ngIf="userType === tsaType" class="table-service-sub-header-td">
+                <b>Travel</b>
+              </td>
+            </thead>
+            <tbody>
+              <tr *ngFor="let service of serviceList.controls" class="text-center">
+                <td>
+                  {{ !!service.get('coe').value ? getServicesName('END_POINT', service.get('coe').value) : '-'}}
+                </td>
+                <td>
+                  {{ !!service.get('contractType').value ? getServicesName('CONTRACT_TYPE', service.get('contractType').value) : '-'}}
+                </td>
+                <td>
+                  {{!!service.get('contractDuration').value ? service.get('contractDuration').value : '-'}}
+                </td>
+                <td>
+                  {{!!service.get('endPoint').value ? getServicesName('TECH', service.get('endPoint').value) : '-'}}
+                </td>
+                <td>
+                  {{!!service.get('serviceWindow').value ? getServicesName('SW', service.get('serviceWindow').value) : '-'}}
+                </td>
+                <td>
+                  {{!!service.get('serviceScope').value ? getServicesName('SS', service.get('serviceScope').value) : '-'}}
+                </td>
+                <td>
+                  {{!!service.get('vendor').value ? getServicesName('PRODUCT', service.get('vendor').value) : '-'}}
+                </td>
+                <td>
+                  {{!!service.get('noOfServers').value ? service.get('noOfServers').value : '-'}}
+                </td>
+                <td>
+                  {{!!service.get('noOfConsoles').value ? service.get('noOfConsoles').value : '-'}}
+                </td>
+                <td *ngIf="userType === tsaType">
+                  {{!!service.get('onCallText') && !!service.get('onCallText').value ? service.get('onCallText').value : '-'}}
+                </td>
+                <td *ngIf="userType === tsaType">
+                  {{!!service.get('b7Text') && !!service.get('b7Text').value ? service.get('b7Text').value : '-'}}
+                </td>
+                <td *ngIf="userType === tsaType">
+                  {{!!service.get('b5Text') && !!service.get('b5Text').value ? service.get('b5Text').value : '-'}}
+                </td>
+                <td *ngIf="userType === tsaType">
+                  {{!!service.get('b6aText') && !!service.get('b6aText').value ? service.get('b6aText').value : '-'}}
+                </td>
+                <td *ngIf="userType === tsaType">
+                  {{!!service.get('b6bText') && !!service.get('b6bText').value ? service.get('b6bText').value : '-'}}
+                </td>
+                <td *ngIf="userType === tsaType">
+                  {{!!service.get('b8Text') && !!service.get('b8Text').value ? service.get('b8Text').value : '-'}}
+                </td>
+                <td *ngIf="userType === tsaType">
+                  {{!!service.get('fteText') &&  !!service.get('fteText').value ? service.get('fteText').value : '-'}}
+                </td>
+                <td *ngIf="userType === tsaType">
+                  {{!!service.get('travel') && !!service.get('travel').value ? service.get('travel').value : '-'}}
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="card card-default">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12">
+          <table *ngFor="let coe of selectedServices; let i = index;" class="table-bordered" style="width: 100% !important;">
+            <thead style="width: 100% !important;">
+              <tr *ngIf="i === 0">
+                <td class="preview-cost-primary-row" colspan="14">
+                  Cost Estimate
+                </td>
+              </tr>
+              <tr *ngIf="i === 0">
+                <td class="preview-cost-secondary-row"></td>
+                <td colspan="4" class="preview-cost-secondary-row">Hours</td>
+                <td colspan="4" class="preview-cost-secondary-row">FTE</td>
+                <td colspan="4" class="preview-cost-secondary-row">Cost in $</td>
+                <td class="preview-cost-secondary-row"></td>
+              </tr>
+
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="preview-cost-third-header-row">{{coe['name']}}</td>
+                <td class="preview-cost-third-header-row">B5</td>
+                <td class="preview-cost-third-header-row">B7</td>
+                <td class="preview-cost-third-header-row">B8</td>
+                <td class="preview-cost-third-header-row">On-Call</td>
+                <td class="preview-cost-third-header-row">B5</td>
+                <td class="preview-cost-third-header-row">B7</td>
+                <td class="preview-cost-third-header-row">B8</td>
+                <td class="preview-cost-third-header-row">On-Call</td>
+                <td class="preview-cost-third-header-row">B5</td>
+                <td class="preview-cost-third-header-row">B7</td>
+                <td class="preview-cost-third-header-row">B8</td>
+                <td class="preview-cost-third-header-row">On-Call</td>
+                <td class="preview-cost-third-header-row">Total</td>
+              </tr>
+              <tr *ngFor="let rowHeader of previewCostTableRowHeaders">
+                <td class="preview-cost-secondary-row">{{rowHeader}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="13" class="preview-cost-total-row">Total</td>
+                <td colspan="1"></td>
+              </tr>
+              <tr style="border: none !important;">
+                <td style="border-left: none !important;border-right: none !important;" colspan="14">&nbsp;</td>
+              </tr>
+
+              <tr *ngIf="i === selectedServices.length-1">
+                <td colspan="13" class="preview-cost-total-row">Grand Total</td>
+                <td colspan="1"></td>
+              </tr>
+            </tbody>
+
+          </table>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <!-- <div class="card card-default" style="border-color: blue !important; padding: 10px !important;"> -->
+    <div class="row col-md-12 col-lg-12 col-xl-12">
+      <table class="table-bordered" style="width: 100% !important;">
+        <thead>
+          <td class="table-term-header-td">
+            <h5>Terms & Conditions</h5>
+          </td>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="table-term-content-td">
+              <div *ngFor="let termCondition of termsList" class="card m-2">
+                <div *ngIf="!!termCondition" class="card-header">
+                  {{termCondition.description}}
+                </div>
+                <div *ngIf="!!termCondition" class="card-content p-2">
+                  <div [innerHtml]="termCondition.termsAndCondition">
+
+                  </div>
+
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- </div> -->
+
+  </div>
+  <div class="modal-footer">
+    <div class="row col-md-12   2 col-xl-12">
+      <div class="col-md-6 col-lg-6 col-xl-6 text-left">
+        <a href="{{downloadURL}}?formId={{submittedFormIdToDownload}}">
+          <button [disabled]="!submittedFormIdToDownload" type="button" class="btn btn-outline-primary btn-sm btn-primary-ibm">download</button>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-6 text-right">
+        <button type="button" class="btn btn-outline-primary btn-sm btn-primary-ibm" (click)="modal.close('Save click')">Close</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+
+<hr>

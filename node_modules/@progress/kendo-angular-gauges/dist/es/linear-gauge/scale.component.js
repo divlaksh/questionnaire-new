@@ -1,0 +1,34 @@
+import * as tslib_1 from "tslib";
+import { Input, Component } from '@angular/core';
+import { ScaleComponent } from '../base-components';
+import { ConfigurationService } from '../services';
+/**
+ * The configuration options for the scale of the LinearGauge
+ * ([see example]({% slug scaleoptions_lineargauge %})).
+ */
+var LinearScaleComponent = /** @class */ (function (_super) {
+    tslib_1.__extends(LinearScaleComponent, _super);
+    function LinearScaleComponent(configurationService) {
+        var _this = _super.call(this, 'scale', configurationService) || this;
+        _this.configurationService = configurationService;
+        return _this;
+    }
+    LinearScaleComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'kendo-lineargauge-scale',
+                    template: ''
+                },] },
+    ];
+    /** @nocollapse */
+    LinearScaleComponent.ctorParameters = function () { return [
+        { type: ConfigurationService }
+    ]; };
+    LinearScaleComponent.propDecorators = {
+        line: [{ type: Input }],
+        ranges: [{ type: Input }],
+        mirror: [{ type: Input }],
+        vertical: [{ type: Input }]
+    };
+    return LinearScaleComponent;
+}(ScaleComponent));
+export { LinearScaleComponent };

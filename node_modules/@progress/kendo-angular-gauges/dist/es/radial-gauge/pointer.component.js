@@ -1,0 +1,33 @@
+import * as tslib_1 from "tslib";
+import { Input, Component } from '@angular/core';
+import { CollectionChangesService, ConfigurationService } from '../services';
+import { CollectionItemComponent } from '../base-components';
+/**
+ * The configuration options for a pointer item of a RadialGauge.
+ */
+var RadialPointerComponent = /** @class */ (function (_super) {
+    tslib_1.__extends(RadialPointerComponent, _super);
+    function RadialPointerComponent(configurationService, collectionChangesService) {
+        return _super.call(this, configurationService, collectionChangesService) || this;
+    }
+    RadialPointerComponent.decorators = [
+        { type: Component, args: [{
+                    providers: [ConfigurationService],
+                    selector: 'kendo-radialgauge-pointer',
+                    template: ''
+                },] },
+    ];
+    /** @nocollapse */
+    RadialPointerComponent.ctorParameters = function () { return [
+        { type: ConfigurationService },
+        { type: CollectionChangesService }
+    ]; };
+    RadialPointerComponent.propDecorators = {
+        cap: [{ type: Input }],
+        color: [{ type: Input }],
+        length: [{ type: Input }],
+        value: [{ type: Input }]
+    };
+    return RadialPointerComponent;
+}(CollectionItemComponent));
+export { RadialPointerComponent };

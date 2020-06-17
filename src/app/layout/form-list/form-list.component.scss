@@ -1,0 +1,49 @@
+$primary-background-color: #095a8a;
+$card-header-text-color: #99befa;
+.ibm-text-color {
+  color: $primary-background-color !important;
+}
+
+.border-none {
+  border: none !important;
+}
+
+.btn-change {
+  // height: 50px;
+  // width: 100px;
+  background: #31708f;
+  margin: 10px;
+  float: left;
+  box-shadow: 0 0 1px lightseagreen;
+  -webkit-transition: all 0.5s ease-in-out;
+  border: 0px;
+  color: #fff;
+}
+
+.btn-change:hover {
+  -webkit-transform: scale(1.1);
+  background: $primary-background-color;
+}
+
+.thead-ibm {
+  background-color: $primary-background-color !important;
+  color: white !important;
+}
+
+.icon-ibm {
+  color: $primary-background-color;
+  font-size: 25px;
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+}
+
+.table {
+  font-size: 14px !important;
+}
+
+.card-header-ibm {
+  background-color: $primary-background-color !important;
+  color: white !important;
+  padding-bottom: 5px !important;
+  padding-left: 5px !important;
+}

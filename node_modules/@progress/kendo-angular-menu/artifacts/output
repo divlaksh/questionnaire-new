@@ -1,0 +1,14 @@
+[10:10:44] Using gulpfile /build/gulpfile.js
+[10:10:44] Starting 'start'...
+(node:36368) DeprecationWarning: Tapable.plugin is deprecated. Use new API on `.hooks` instead
+Development server listening on http://localhost:8888/examples
+[hardsource:bba37bdc] Writing new cache bba37bdc...
+[hardsource:bba37bdc] Tracking node dependencies with: package.json, node_modules/*.
+Starting type checking and linting service...
+Using 1 worker with 2048MB memory limit
+Type checking and linting in progress...
+webpack built eb0d417522710501b469 in 8888ms
+No type errors found
+No lint errors found
+Version: typescript 2.9.2, tslint 5.17.0
+Time: 9558ms

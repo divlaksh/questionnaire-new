@@ -1,0 +1,11 @@
+export { AgendaDateTemplateDirective } from './templates/agenda-date-template.directive';
+export { AgendaTimeTemplateDirective } from './templates/agenda-time-template.directive';
+export { AllDayEventTemplateDirective } from './templates/all-day-event-template.directive';
+export { AllDaySlotTemplateDirective } from './templates/all-day-slot-template.directive';
+export { DateHeaderTemplateDirective } from './templates/date-header-template.directive';
+export { EventTemplateDirective } from './templates/event-template.directive';
+export { GroupHeaderTemplateDirective } from './templates/group-header-template.directive';
+export { MajorTimeHeaderTemplateDirective } from './templates/major-time-header-template.directive';
+export { MinorTimeHeaderTemplateDirective } from './templates/minor-time-header-template.directive';
+export { MonthDaySlotTemplateDirective } from './templates/month-day-slot-template.directive';
+export { TimeSlotTemplateDirective } from './templates/time-slot-template.directive';

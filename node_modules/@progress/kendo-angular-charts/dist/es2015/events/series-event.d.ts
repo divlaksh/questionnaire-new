@@ -1,0 +1,45 @@
+import { ChartComponent } from '../chart.component';
+import { EventSeriesOptions } from '../api-types/event-series-options.interface';
+import { SeriesPoint } from '../api-types/series-point.interface';
+import { PreventableEvent } from './preventable-event';
+/**
+ * @hidden
+ */
+export declare class SeriesEvent extends PreventableEvent {
+    /**
+     * The data point category.
+     */
+    category: any;
+    /**
+     * The original data item.
+     */
+    dataItem: any;
+    /**
+     * The original user event that triggered the drag action.
+     */
+    originalEvent: any;
+    /**
+     * The point value represented as a percentage value. Available only for the Donut, Pie, and 100% stacked charts.
+     */
+    percentage: number;
+    /**
+     * The hovered series point.
+     */
+    point: SeriesPoint;
+    /**
+     * The hovered point series options.
+     */
+    series: EventSeriesOptions;
+    /**
+     * The cumulative point value on the stack. Available only for the stackable series.
+     */
+    stackValue: number;
+    /**
+     * The data point value.
+     */
+    value: any;
+    /**
+     * @hidden
+     */
+    constructor(e: any, sender: ChartComponent);
+}

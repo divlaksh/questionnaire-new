@@ -1,0 +1,887 @@
+
+<div #reportContent class="card card-default" style="border: none !important; margin: 20px !important; background-color: #f8f1f1">
+    <kendo-pdf-export #pdf paperSize="A4" landscape="true" >
+  <div class="card-header card-header-questionnaire">
+    <div class="row">
+      <div class="col-6 text-center">
+        <h3>
+          <span class="page-title">Customer Questionnaire</span>
+        </h3>
+        <div class="col-12 sub-title">
+          X-FORCE ENDPOINT SECURITY SERVICES
+        </div>
+        <div class="col-12 sub-title">
+          VERSION 11
+        </div>
+        <!-- <p class="sub-title">X-FORCE ENDPOINT SECURITY SERVICES</p> -->
+        <!-- <p class="sub-title"></p> -->
+
+      </div>
+      <div class="col-6 text-center">
+        <img src="../../assets/images/Security.png">
+      </div>
+    </div>
+  </div>
+  <div class="card-header">
+    <div class="row text-center">
+      <div class="col-12 ">
+        You must attach this form to your RFS to receive a sizing/pricing.
+      </div>
+      <div class="col-12 ">
+        If you have any questions, Slack
+        <a href="https://ibm.enterprise.slack.com/?redir=%2Fr-t63217127925%3Fredir%3D%252Farchives%252FCUM19MG7P">#xfess-intake-public</a>
+        or Email
+        <a href="mailto:xfessitk@us.ibm.com">xfessitk@us.ibm.com</a> or
+      </div>
+      <div class="col-12 ">
+        XFESS INTAKE/Poughkeepsie/IBM
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card-header card-header-ibm">
+    <div class="row">
+      <div class="col-12 pull-left">
+        REQUESTOR'S INFORMATION
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card card-default card-outer" style="background-color: #f8f1f1">
+      <div class="card-body p-1 m-1">
+
+        <div class="col-12 row">
+          <div class="col-6"></div>
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="dateField" class="col-sm-4 col-form-label align-right text-nowrap">Date</label>
+              <input type="date" class="col-sm-6 form-control form-control-sm input-sm" id="dateField">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="firstName" class="col-sm-4 col-form-label text-nowrap">First Name:
+              </label>
+              <input type="text" class="col-sm-6 form-control form-control-sm input-sm" id="firstName">
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="lastName" class="col-sm-4 col-form-label text-nowrap">Last Name: </label>
+              <input type="text" class="col-sm-6 form-control form-control-sm input-sm" id="lastName">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="role" class="col-sm-4 col-form-label text-nowrap">Role: </label>
+              <input type="text" class="col-sm-6 form-control form-control-sm input-sm" id="role">
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="email" class="col-sm-4 col-form-label text-nowrap">E-Mail Address:
+              </label>
+              <input type="email" class="col-sm-6 form-control form-control-sm input-sm" id="email">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card-header card-header-ibm">
+    <div class="row">
+      <div class="col-12 pull-left">
+        CUSTOMER'S INFORMATION
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card card-default card-outer" style="background-color: #f8f1f1">
+      <div class="card-body p-1 m-1">
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="customerName" class="col-sm-4 col-form-label text-nowrap">Customer Name
+              </label>
+              <input type="text" class="col-sm-8 form-control form-control-sm input-sm" id="customerName">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="customerStatus" class="col-sm-4 col-form-label text-nowrap">Customer's Status </label>
+              <div class="col-sm-6">
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="newCustomer" name="customerRadios">
+                  <label class="custom-control-label" for="newCustomer">New Customer</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="existingCustomer" name="customerRadios">
+                  <label class="custom-control-label" for="existingCustomer">Existing Customer
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="email" class="col-sm-6 col-form-label ">Transition/ Transformation estimated start date
+              </label>
+              <div class="col-6">
+                <input type="email" class=" form-control form-control-sm input-sm" id="email">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="revenueStucture" class="col-sm-4 col-form-label text-nowrap">Revenue Structure </label>
+              <div class="col-sm-6">
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="revenueShare" name="revenuesRadios">
+                  <label class="custom-control-label" for="revenueShare">Revenue Share</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="directDeal" name="revenuesRadios">
+                  <label class="custom-control-label" for="directDeal">Direct Deal</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="costRecovery" name="revenuesRadios">
+                  <label class="custom-control-label" for="costRecovery">Cost Recovery, please explain
+                  </label>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-6">
+            <div class="form-group row invoer col-12">
+              <input type="text" class="form-control form-control-sm input-sm" id="otherText" name="itherText">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="customerStatus" class="col-sm-4 col-form-label text-nowrap">Solution Designer </label>
+              <div class="col-sm-6">
+                <select class="form-control form-control-sm input-sm">
+                  <option value=""></option>
+                  <option *ngFor="let designer of solutionDesginers" value="{{designer.id}}">
+                    {{designer.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="solutionoWner" class="col-sm-4 col-form-label ">Leader or Technical Solution Owner</label>
+              <div class="col-6">
+                <input type="text" class=" form-control form-control-sm input-sm" id="solutionoWner">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-4">
+            <div class="form-group row">
+              <label for="atlasNumber" class="col-sm-4 col-form-label ">Atlas/Opportunity Number</label>
+              <div class="col-6">
+                <input type="text" class=" form-control form-control-sm input-sm" id="atlasNumber">
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group row">
+              <label for="contractStartDate" class="col-sm-4 col-form-label ">Contract Start Date</label>
+              <div class="col-6">
+                <input type="text" class=" form-control form-control-sm input-sm" id="contractStartDate">
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group row">
+              <label for="contractEndDate" class="col-sm-4 col-form-label ">Contract End Date</label>
+              <div class="col-6">
+                <input type="text" class=" form-control form-control-sm input-sm" id="contractEndDate">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="rfsNumber" class="col-sm-4 col-form-label ">RFS Number</label>
+              <div class="col-6">
+                <input type="text" class=" form-control form-control-sm input-sm" id="rfsNumber">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-8">
+            <div class="form-group row">
+              <label for="customerStatus" class="col-sm-4 col-form-label text-nowrap">Firm Price or NBIE
+              </label>
+              <div class="col-sm-3">
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="firm" name="firmRadios">
+                  <label class="custom-control-label" for="firm">Firm</label>
+                </div>
+              </div>
+
+              <div class="col-sm-3">
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="nbie" name="firmRadios">
+                  <label class="custom-control-label" for="nbie">NBIE</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="deliveryReq" class="col-sm-4 col-form-label">Service Delivery Requirement </label>
+              <div class="col-sm-6">
+                <div *ngFor="let serviceDelivery of serviceDeliveries" class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="{{serviceDelivery.name}}">
+                  <label class="custom-control-label" for="{{serviceDelivery.name}}">{{serviceDelivery.name}}</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="customerStatus" class="col-sm-4 col-form-label text-nowrap">Restricted Delivery </label>
+              <div class="col-sm-6">
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="restrctedNo" name="restrictedRadios">
+                  <label class="custom-control-label" for="restrctedNo">No</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="restrctedYes" name="restrictedRadios">
+                  <label class="custom-control-label" for="restrctedYes">Yes, explain restrictions</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="form-group row invoer col-12">
+              <input type="text" class="form-control form-control-sm input-sm" id="otherText" name="itherText">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card-header card-header-ibm">
+    <div class="row">
+      <div class="col-12 pull-left">
+        PRODUCTS TO SUPPORT
+        <span style="font-size: 10px !important;">
+          <a href="https://apps.na.collabserv.com/wikis/home?lang=en-us#!/wiki/W49f4777572e3_4d18_8e6f_fb25519d035f/page/IES%20Custom%20Delivery%20Standard%20Service%20Descriptions">For Service Descriptions...</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 pull-left sub-section-div">
+      <span class="sub-section-header">
+        <b>
+          <u>XF Endpoint Security Services</u>
+        </b>
+      </span>
+    </div>
+  </div>
+
+  <div class="col-12">
+
+    <div class="card card-default card-outer" style="background-color: #f8f1f1">
+      <div class="card-body p-1 m-1">
+
+        <div class="col-12 row">
+          <div class="col-8">
+            <div class="form-group row">
+              <label for="vendors" class="col-sm-4 col-form-label text-nowrap">Vendor Name
+              </label>
+              <div class="col-8">
+                <select id="vendors" class="form-control form-control-sm input-sm">
+                  <option value=""></option>
+                  <option *ngFor="let vendor of vendorList" value="{{vendor.id}}">{{vendor.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-4">
+            <div class="form-group row">
+              <label for="additionalConsole" class="col-sm-8 col-form-label ">Additional Consoles? If so, how many</label>
+              <div class="col-4">
+                <select id="consoles" class="form-control form-control-sm input-sm">
+                  <option value=""></option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group row">
+              <label for="servers" class="col-sm-8 col-form-label ">How many total Servers to support?</label>
+              <div class="col-4">
+                <input type="text" class=" form-control form-control-sm input-sm" id="servers">
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group row">
+              <label for="totalWorkstations" class="col-sm-8 col-form-label ">How many total Workstations to support?</label>
+              <div class="col-4">
+                <input type="text" class=" form-control form-control-sm input-sm" id="totalWorkstations">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-12 row">
+          <div class="col-12">
+            <div class="form-group row">
+              <label for="featureSupport" class="col-sm-3 col-form-label">Product Features to Support</label>
+              <div class="col-sm-4">
+                <div *ngFor="let feature of productFeatures1" class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="{{feature.name}}">
+                  <label class="custom-control-label" for="{{feature.name}}">{{feature.name}}</label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div *ngFor="let feature of productFeatures2" class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="{{feature.name}}">
+                  <label class="custom-control-label" for="{{feature.name}}">{{feature.name}}</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-sm input-sm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 pull-left sub-section-div">
+      <span class="sub-section-header">
+        <b>
+          <u>Environment and Platforms</u>
+        </b>
+      </span>
+    </div>
+  </div>
+
+  <div class="col-12">
+
+    <div class="card card-default card-outer" style="background-color: #f8f1f1">
+      <div class="card-body p-1 m-1">
+
+        <div class="col-12 row">
+          <div class="col-12">
+            <div class="form-group row">
+              <label for="otherDetails" class="col-sm-4 col-form-label ">List all endpoint platforms and versions in the environment.</label>
+              <div class="col-8">
+                <textarea class="form-control form-control-sm" id="otherDetails"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="row">
+    <div class="col-12 pull-left sub-section-div">
+      <span class="sub-section-header">
+        <b>
+          <u>Managed Encryption Services (MES) with Thales Vormetric</u>
+        </b>
+      </span>
+    </div>
+  </div>
+
+  <div class="col-12">
+
+    <div class="card card-default card-outer" style="background-color: #f8f1f1">
+      <div class="card-body p-1 m-1">
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="dsm" class="col-sm-4 col-form-label ">Number of DSMs (Minimum 1)</label>
+              <div class="col-8">
+                <input type="text" class="form-control form-control-sm input-sm col-8" id="dsm">
+              </div>
+            </div>
+           </div>
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="policies" class="col-sm-4 col-form-label">Number of Distinct Policies</label>
+              <div class="col-8">
+                <input type="text" class="form-control form-control-sm input-sm" id="policies">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="hsm" class="col-sm-4 col-form-label ">Number of HSMs</label>
+              <div class="col-8">
+                <input type="text" class="form-control form-control-sm input-sm col-8" id="hsm">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="policyMonth" class="col-sm-4 col-form-label">Number of Policy Changes per month</label>
+              <div class="col-8">
+                <input type="text" class="form-control form-control-sm input-sm" id="policyMonth">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="agent" class="col-sm-4 col-form-label ">Number of Hosts with an Agent</label>
+              <div class="col-8">
+                <input type="text" class="form-control form-control-sm input-sm col-8" id="agent">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="meetings" class="col-sm-4 col-form-label">Number of meetings per month (min=4)</label>
+              <div class="col-8">
+                <input type="text" class="form-control form-control-sm input-sm" id="meetings">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="dbInstances" class="col-sm-4 col-form-label ">Number of DB Instances</label>
+              <div class="col-8">
+                <input type="text" class="form-control form-control-sm input-sm col-8" id="dbInstances">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="serviceProvider" class="col-sm-4 col-form-label">CCKM Cloud Service Provider</label>
+              <div class="col-8">
+                <select class="form-control form-control-sm input-sm" id="serviceProvider">
+                  <option value=""></option>
+                  <option *ngFor="let serviceProvider of serviceProviders" value="{{serviceProvider.id}}">{{serviceProvider.name}}</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm input-sm" id="serviceProvider" style="margin-top: 5px !important;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-12">
+            <div class="form-group row">
+              <label for="additionalinformation" class="col-sm-4 col-form-label ">Additional Information</label>
+              <div class="col-8">
+                <textarea class="form-control form-control-sm" id="additionalinformation"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <hr class="divider" />
+
+  <div class="row">
+    <div class="col-12 pull-left sub-section-div">
+      <span class="sub-section-header">
+        <b>
+          <u>Carbon Black Protect</u>
+        </b>
+      </span>
+    </div>
+  </div>
+
+  <div class="col-12">
+
+    <div class="card card-default card-outer" style="background-color: #f8f1f1">
+      <div class="card-body p-1 m-1">
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="endpoints" class="col-sm-4 col-form-label ">How many total endpoints?</label>
+              <div class="col-8">
+                <input type="text" class="form-control form-control-sm input-sm" id="endpoints">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="additionalInfo" class="col-sm-4 col-form-label ">Additional Info</label>
+              <div class="col-8">
+                <textarea class="form-control form-control-sm" id="additionalInfo"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <hr class="divider" />
+
+  <div class="row">
+    <div class="col-12 pull-left sub-section-div">
+      <span class="sub-section-header">
+        <b>
+          <u>Network Attached Storage (NAS)</u>
+        </b>
+      </span>
+    </div>
+  </div>
+
+  <div class="col-12">
+
+    <div class="card card-default card-outer" style="background-color: #f8f1f1">
+      <div class="card-body p-1 m-1">
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="scanningAgens" class="col-sm-4 col-form-label "># of Scanning Agents </label>
+              <div class="col-8">
+                <input type="text" class="form-control form-control-sm input-sm" id="scanningAgens">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="scanningAdditionalInfo" class="col-sm-4 col-form-label ">Additional Info</label>
+              <div class="col-8">
+                <textarea class="form-control form-control-sm" id="scanningAdditionalInfo"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="row">
+    <div class="col-12 pull-left sub-section-div">
+      <span class="sub-section-header">
+        <b>
+          <u>Container Security</u>
+        </b>
+      </span>
+    </div>
+  </div>
+
+  <div class="col-12">
+
+    <div class="card card-default card-outer" style="background-color: #f8f1f1">
+      <div class="card-body p-1 m-1">
+
+        <div class="col-12 row">
+          <div class="col-4">
+            <div class="form-group row">
+              <label for="noOfPolicyChanges" class="col-sm-6 col-form-label ">How many policy changes per month(Default = 5):</label>
+              <div class="col-6">
+                <input type="text" class="form-control form-control-sm input-sm" id="noOfPolicyChanges">
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group row">
+              <label for="noOfClusters" class="col-sm-6 col-form-label ">How many Clusters? (Default = 1)</label>
+              <div class="col-6">
+                <input type="text" class="form-control form-control-sm input-sm" id="noOfClusters">
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group row">
+              <label for="noOfMeetings" class="col-sm-6 col-form-label ">How many meetings per month? (Default = 1)</label>
+              <div class="col-6">
+                <input type="text" class="form-control form-control-sm input-sm" id="noOfMeetings">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-4">
+            <div class="form-group row">
+              <label for="noOfStdReport" class="col-sm-6 col-form-label ">How many Standard Reports per month? (Default = 1)</label>
+              <div class="col-6">
+                <input type="text" class="form-control form-control-sm input-sm" id="noOfStdReport">
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group row">
+              <label for="noOfMasterNodes" class="col-sm-6 col-form-label ">How many Master Nodes?</label>
+              <div class="col-6">
+                <input type="text" class="form-control form-control-sm input-sm" id="noOfMasterNodes">
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group row">
+              <label for="noOfWorkerNodes" class="col-sm-6 col-form-label ">How many Worker Nodes?</label>
+              <div class="col-6">
+                <input type="text" class="form-control form-control-sm input-sm" id="noOfWorkerNodes">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-3">
+            <div class="form-group row">
+              <label for="cicdpipeline" class="col-sm-12 col-form-label  text-nowrap">CI/CD Pipeline Integration?</label>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group row">
+              <label for="noOfMasterNodes" class="col-sm-12 col-form-label  text-nowrap">SIEM Integration</label>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group row">
+              <label for="noOfWorkerNodes" class="col-sm-6 col-form-label  text-nowrap">IBM Kubernetes?</label>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group row">
+              <label for="noOfWorkerNodes" class="col-sm-6 col-form-label text-nowrap ">Platform</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 row">
+          <div class="col-3">
+            <div class="col-sm-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="cicdpipelineYes" name="cicdPipelineRadios">
+                <label class="custom-control-label" for="cicdpipelineYes">Yes</label>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="cicdpipelineNo" name="cicdPipelineRadios">
+                <label class="custom-control-label" for="cicdpipelineNo">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="col-sm-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="siemYes" name="siemRadios">
+                <label class="custom-control-label" for="siemYes">Yes</label>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="siemNo" name="siemRadios">
+                <label class="custom-control-label" for="siemNo">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="col-sm-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="kubernetYes" name="kubernetRadios">
+                <label class="custom-control-label" for="kubernetYes">Yes</label>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="kubernetNo" name="kubernetRadios">
+                <label class="custom-control-label" for="kubernetNo">NO</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="col-sm-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="platformYes" name="platformRadios">
+                <label class="custom-control-label" for="platformYes">Yes</label>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="platformNo" name="platformRadios">
+                <label class="custom-control-label" for="platformNo">No</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 row">
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="environmentLocated" class="col-sm-4 col-form-label ">Where is the Environment located</label>
+              <div class="col-8">
+                <textarea class="form-control form-control-sm input-sm" id="environmentLocated"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group row">
+              <label for="scanningAdditionalInfo" class="col-sm-2 col-form-label ">Vendor</label>
+              <div class="col-10">
+                <div class="custom-control custom-radio col-12">
+                  <input type="radio" class="custom-control-input" id="twistlock" name="vendorRadios">
+                  <label class="custom-control-label" for="twistlock">Twistlock</label>
+                </div>
+                <div class="custom-control custom-radio col-12">
+                  <input type="radio" class="custom-control-input" id="aquaSecvendor" name="vendorRadios">
+                  <label class="custom-control-label" for="aquaSecvendor">Aqua Security</label>
+                </div>
+                <div class="custom-control custom-radio col-12">
+                  <input type="radio" class="custom-control-input col-1" id="otherVendor" name="vendorRadios">
+                  <label class="custom-control-label" for="otherVendor col-2">Other</label>
+                  <input type="text" style="margin-left: 10px;" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="card-header card-header-ibm">
+      <div class="row">
+        <div class="col-12 pull-left">
+          ADDITIONAL NOTES
+                  </div>
+      </div>
+    </div>
+
+
+    <div class="col-12">
+
+        <div class="card card-default card-outer" style="background-color: #f8f1f1">
+          <div class="card-body p-1 m-1">
+    
+            <div class="col-12">
+              
+                <div class="form-group row">
+                    <label for="scanningAdditionalInfo" class="col-sm-3 col-form-label ">Please describe additional requirements in detail</label>
+                    <textarea class="form-control form-control-sm  col-sm-9" rows="4"></textarea>
+                    
+                  </div>
+              </div>
+              </div>
+              </div>
+              </div>
+
+              
+            </kendo-pdf-export>
+            <hr class="divider" />
+
+  <div class="col-12">
+
+    <div class="card card-default card-outer" style="background-color: #f8f1f1">
+      <div class="card-body p-1 m-1">
+        <div class="row col-12 text-right">
+          <button class="btn btn-fill btn-primary" kendo-button (click)="pdf.saveAs('customer-questionnaire.pdf')">Download PDF</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>

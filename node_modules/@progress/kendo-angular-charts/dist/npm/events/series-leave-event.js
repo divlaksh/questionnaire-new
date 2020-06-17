@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = require("tslib");
+var series_event_1 = require("./series-event");
+/**
+ * Arguments for the `seriesLeave` event.
+ */
+var SeriesLeaveEvent = /** @class */ (function (_super) {
+    tslib_1.__extends(SeriesLeaveEvent, _super);
+    function SeriesLeaveEvent() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return SeriesLeaveEvent;
+}(series_event_1.SeriesEvent));
+exports.SeriesLeaveEvent = SeriesLeaveEvent;

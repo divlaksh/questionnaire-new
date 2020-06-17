@@ -1,0 +1,25 @@
+import * as tslib_1 from "tslib";
+import { PreventableEvent } from './preventable-event';
+/**
+ * @hidden
+ */
+var SeriesEvent = /** @class */ (function (_super) {
+    tslib_1.__extends(SeriesEvent, _super);
+    /**
+     * @hidden
+     */
+    function SeriesEvent(e, sender) {
+        var _this = _super.call(this, sender) || this;
+        _this.category = e.category;
+        _this.dataItem = e.dataItem;
+        _this.originalEvent = e.originalEvent;
+        _this.percentage = e.percentage;
+        _this.point = e.point;
+        _this.series = e.series;
+        _this.stackValue = e.stackValue;
+        _this.value = e.value;
+        return _this;
+    }
+    return SeriesEvent;
+}(PreventableEvent));
+export { SeriesEvent };

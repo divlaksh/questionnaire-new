@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "bootstrap/bootstrap";
+@import "spinner";
+@import "utils";
+@import "rtl";
+@import "responsive";
+
+$primary-background-color: #095a8a;
+$card-header-text-color: #99befa;
+
+@media print {
+  .breadcrumb {
+    display: none !important;
+  }
+}
+
+.multiselect-dropdown .dropdown-btn {
+  display: inline-block;
+  border: 1px solid #adadad;
+  width: 100%;
+  padding: 4px 12px !important;
+  margin-bottom: 0;
+  font-size: 0.875rem !important;
+  font-weight: 200 !important;
+  line-height: 1.52857143;
+  text-align: left;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border-radius: 4px;
+}
+
+.card-header-ibm {
+  background-color: $primary-background-color !important;
+  color: white !important;
+  padding-bottom: 5px !important;
+  padding-left: 5px !important;
+}
+
+.card-header-questionnaire {
+  background-color: white !important;
+}
+
+.card-body-questionnaire {
+  background-color: #e9ecef !important
+}
+
+.card-content-ibm {
+  padding-bottom: 5px !important;
+  padding-left: 5px !important;
+}

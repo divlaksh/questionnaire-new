@@ -1,0 +1,8 @@
+import { InstanceObserver } from '@progress/kendo-charts';
+/**
+ * @hidden
+ */
+export declare class ChartInstanceObserver extends InstanceObserver {
+    protected handlerMap: any;
+    constructor(instance: any);
+}

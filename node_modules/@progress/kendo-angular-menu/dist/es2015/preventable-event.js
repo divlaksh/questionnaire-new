@@ -1,0 +1,30 @@
+/**
+ * @hidden
+ */
+export class PreventableEvent {
+    /**
+     * @hidden
+     */
+    constructor(args) {
+        this.prevented = false;
+        Object.assign(this, args);
+    }
+    /**
+     * Prevents the default action for a specified event.
+     * In this way, the source component suppresses
+     * the built-in behavior that follows the event.
+     */
+    preventDefault() {
+        this.prevented = true;
+    }
+    /**
+     * Returns `true` if the event was prevented
+     * by any of its subscribers.
+     *
+     * @returns `true` if the default action was prevented.
+     * Otherwise, returns `false`.
+     */
+    isDefaultPrevented() {
+        return this.prevented;
+    }
+}

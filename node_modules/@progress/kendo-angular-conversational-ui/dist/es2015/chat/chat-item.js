@@ -1,0 +1,5 @@
+/**
+ * @hidden
+ */
+export class ChatItem {
+}

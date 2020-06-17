@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+/**
+ * @hidden
+ */
+var CollectionChangesService = /** @class */ (function () {
+    function CollectionChangesService() {
+    }
+    CollectionChangesService.decorators = [
+        { type: core_1.Injectable },
+    ];
+    return CollectionChangesService;
+}());
+exports.CollectionChangesService = CollectionChangesService;

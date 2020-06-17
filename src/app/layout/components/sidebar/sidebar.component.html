@@ -1,0 +1,91 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+  <div class="list-group text-right">
+    <div *ngIf="userType !== 'ADMIN' &&  userType !== approverType">
+      <br>
+      <a [routerLink]="['/form-list', 'true']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-list-ol" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        <span>{{ userType === requestorType ? 'My List' : 'Queue' | translate }}</span>
+      </a>
+    </div>
+    <div *ngIf="userType === tsaType ">
+      <br>
+      <a [routerLink]="['/pending-list', 'true']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-hourglass-half" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        <span>{{ 'Pending' | translate }}</span>
+      </a>
+      <br>
+      <a [routerLink]="['/rejected-list', 'true']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-thumbs-down" aria-hidden="true">
+        </i>&nbsp;&nbsp;&nbsp;
+        <span>{{ 'Rejected' | translate }}</span>
+      </a>
+      <br>
+      <a [routerLink]="['/my-list', 'true']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-list-ol" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        <span>{{ 'My List' | translate }}</span>
+      </a>
+
+    </div>
+    <div *ngIf="userType === approverType ">
+      <br>
+      <a [routerLink]="['/pending-list', 'true']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-hourglass-half" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        <span>{{ 'Pending' | translate }}</span>
+      </a>
+      <br>
+      <a *ngIf="!userLevel" [routerLink]="['/my-list', 'true']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-list-ol" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        <span>{{ 'My List' | translate }}</span>
+      </a>
+      <!-- <br>
+      <a [routerLink]="['/rejected-list', 'true']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        <span>{{ 'REJECTED' | translate }}</span>
+      </a> -->
+    </div>
+    <div *ngIf="userType === requestorType ">
+      <br>
+      <a [routerLink]="['/estimator', 'true']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
+        <span>{{ 'New' | translate }}</span>
+      </a>
+      <br>
+      <a [routerLink]="['/approved-list', 'true']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        <span>{{ 'Approved' | translate }}</span>
+      </a>
+
+      <br>
+      <a [routerLink]="['/completed-list', 'true']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        <span>{{ 'Completed' | translate }}</span>
+      </a>
+    </div>
+    <div *ngIf="userType !== 'ADMIN' && !userLevel ">
+      <br>
+      <a [routerLink]="['/search-form', 'true']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        <span>{{ 'Search Form' | translate }}</span>
+      </a>
+    </div>
+    <br>
+    <div>
+      <a [routerLink]="['/dashboard']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        <span>{{ 'Dashboard' | translate }}</span>
+      </a>
+    </div>
+    <br>
+    <div>
+      <a [routerLink]="['/help']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        <span>{{ 'Help' | translate }}</span>
+      </a>
+    </div>
+
+  </div>
+  <div class="toggle-button" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
+    <i class="fa fa-fw fa-angle-double-left"></i>&nbsp;
+    <span>{{ 'Collapse Sidebar' | translate }}</span>
+  </div>
+</nav>

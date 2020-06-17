@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="row col-md-12  col-xl-12 col-lg-12">
+    <div class="col-md-4  col-xl-4 col-lg-4 text-left">
+      <a class="navbar-brand" href="#">
+        <img src="./assets/images/Security.png">
+      </a>
+    </div>
+    <div class="col-md-4 col-xl-4 col-lg-4 text-center" style="padding-top: 5px !important;">
+      <a class="navbar-brand" href="#">
+        <img src="./assets/images/blueq.jpg">
+      </a>
+    </div>
+    <div class="col-md-4 col-xl-4 col-lg-4 text-right">
+      <div class="collapse navbar-collapse" style="padding-right: 0px !important;">
+
+        <ul class="navbar-nav ml-auto">
+
+
+          <li class="nav-item dropdown" ngbDropdown>
+            <a href="javascript:void(0)" class="nav-link ibm-primary-text-color" ngbDropdownToggle>
+              <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 20px !important;"></i> &nbsp;Welcome {{loggedInUser}}
+              <b class="caret"></b>
+            </a>
+
+            <div class="dropdown-menu-right bg-color" ngbDropdownMenu>
+
+              <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()">
+                <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <button class="navbar-toggler" type="button" (click)="toggleSidebar()"> -->
+  <!-- <span class="navbar-toggler-icon"></span> -->
+  <!-- <i class="fa fa-bars text-muted" aria-hidden="true"></i> -->
+  <!-- </button> -->
+
+</nav>

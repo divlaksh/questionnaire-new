@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = require("tslib");
+var note_event_1 = require("./note-event");
+/**
+ * Arguments for the `noteClick` event.
+ */
+var NoteClickEvent = /** @class */ (function (_super) {
+    tslib_1.__extends(NoteClickEvent, _super);
+    function NoteClickEvent() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return NoteClickEvent;
+}(note_event_1.NoteEvent));
+exports.NoteClickEvent = NoteClickEvent;

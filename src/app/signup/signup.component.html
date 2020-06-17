@@ -1,0 +1,48 @@
+<div class="login-page" [@routerTransition]>
+  <div class="row justify-content-md-center">
+    <div class="col-md-4">
+      <!-- <img class="user-avatar" src="assets/images/logo.png" width="150px" /> -->
+      <img src="./assets/images/Security.png" />
+      <!-- <h1>IBM Security</h1> -->
+      <form role="form" [formGroup]="signupForm">
+        <div class="form-content">
+          <div class="form-group ibm-form-group-field">
+            <input formControlName="fullName" type="text" class="form-control input-underline input-lg" id="fullname" placeholder="{{ 'Full Name' | translate }}">
+          </div>
+
+          <div class="form-group ibm-form-group-field">
+            <input formControlName="username" type="text" class="form-control input-underline input-lg" id="email" placeholder="{{ 'Email' | translate }}">
+          </div>
+
+          <div class="form-group ibm-form-group-field">
+            <input formControlName="password" type="password" class="form-control input-underline input-lg" id="password" placeholder="{{ 'Password' | translate }}">
+          </div>
+          <div class="form-group ibm-form-group-field">
+            <input formControlName="confirmPassword" type="password" class="form-control input-underline input-lg" id="confirmPassword"
+              placeholder="{{ 'Confirm Password' | translate }}">
+          </div>
+          <div class="form-group ibm-form-group-field">
+            <!-- <input type="password" class="form-control input-underline input-lg" id="confirmPassword" placeholder="{{ 'Confirm Password' | translate }}"> -->
+            <select formControlName="userType" class="form-control input-underline input-lg" id="userType" placeholder="Select Type">
+              <option style="color: black !important;" value="" selected disabled>Select User Type</option>
+              <option style="color: black !important;" value="REQUESTOR">REQUESTOR</option>
+              <option style="color: black !important;" value="TSA">TSA</option>
+              <option style="color: black !important;" value="APPROVER">APPROVER</option>
+            </select>
+          </div>
+          <div *ngIf="registrationSuccess" class="form-group">
+            <span class="text-success">User Created Successfully.</span>
+          </div>
+          <div *ngIf="passwordMisMatch" class="form-group">
+            <span class="text-danger">Password and Confirm Password Not Matching</span>
+          </div>
+          <div *ngIf="failedToCreate" class="form-group">
+            <span class="text-danger">{{errorMsg}}</span>
+          </div>
+        </div>
+        <a class="btn rounded-btn btn-change btn-block" (click)="signupUser()">{{ 'Register' | translate }}</a>&nbsp;
+        <a class="btn  btn-link" [routerLink]="['/login']">{{ 'Log in' | translate }}</a>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+import * as tslib_1 from "tslib";
+import { Component, ContentChildren, QueryList } from '@angular/core';
+import { RadialPointerComponent } from './pointer.component';
+import { CollectionComponent } from '../base-components';
+import { CollectionChangesService, ConfigurationService } from '../services';
+/**
+ * A collection of one or more RadialGauge pointers
+ * ([more information and example]({% slug multiplepointers_radialgauge %})).
+ *
+ * @example
+ * ```ts
+ * import { Component } from '@angular/core';
+ *
+ * _@Component({
+ *     selector: 'my-app',
+ *     template: `
+ *         <kendo-radialgauge>
+ *             <kendo-radialgauge-pointers>
+ *                 <kendo-radialgauge-pointer *ngFor="let pointer of pointers"
+ *                     [value]="pointer.value" [color]="pointer.color">
+ *                 </kendo-radialgauge-pointer>
+ *             </kendo-radialgauge-pointers>
+ *         </kendo-radialgauge>
+ *     `
+ * })
+ * export class AppComponent {
+ *     public pointers: any[] = [{
+ *         value: 10,
+ *         color: '#ffd246'
+ *     }, {
+ *         value: 20,
+ *         color: '#28b4c8'
+ *     }, {
+ *         value: 30,
+ *         color: '#78d237'
+ *     }];
+ * }
+ *
+ * ```
+ */
+var RadialPointersComponent = /** @class */ (function (_super) {
+    tslib_1.__extends(RadialPointersComponent, _super);
+    function RadialPointersComponent(configurationService, collectionChangesService) {
+        return _super.call(this, 'pointer', configurationService, collectionChangesService) || this;
+    }
+    RadialPointersComponent.decorators = [
+        { type: Component, args: [{
+                    providers: [CollectionChangesService],
+                    selector: 'kendo-radialgauge-pointers',
+                    template: ''
+                },] },
+    ];
+    /** @nocollapse */
+    RadialPointersComponent.ctorParameters = function () { return [
+        { type: ConfigurationService },
+        { type: CollectionChangesService }
+    ]; };
+    RadialPointersComponent.propDecorators = {
+        children: [{ type: ContentChildren, args: [RadialPointerComponent,] }]
+    };
+    return RadialPointersComponent;
+}(CollectionComponent));
+export { RadialPointersComponent };

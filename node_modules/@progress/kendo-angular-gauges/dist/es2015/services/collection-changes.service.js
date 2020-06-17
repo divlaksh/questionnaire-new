@@ -1,0 +1,9 @@
+import { Injectable } from '@angular/core';
+/**
+ * @hidden
+ */
+export class CollectionChangesService {
+}
+CollectionChangesService.decorators = [
+    { type: Injectable },
+];

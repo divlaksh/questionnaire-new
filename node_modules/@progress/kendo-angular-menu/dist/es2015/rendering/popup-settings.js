@@ -1,0 +1,62 @@
+const POPUP_ALIGN = {
+    vertical: 'top',
+    horizontal: 'left'
+};
+const POPUP_ALIGN_RTL = {
+    vertical: 'top',
+    horizontal: 'right'
+};
+const VERTICAL_COLLISION = {
+    vertical: 'flip',
+    horizontal: 'fit'
+};
+const HORIZONTAL_COLLISION = {
+    vertical: 'fit',
+    horizontal: 'flip'
+};
+/**
+ * @hidden
+ */
+export const POPUP_SETTINGS_RTL = {
+    vertical: {
+        anchor: {
+            vertical: 'bottom',
+            horizontal: 'right'
+        },
+        popup: POPUP_ALIGN_RTL,
+        collision: VERTICAL_COLLISION,
+        animate: 'down'
+    },
+    horizontal: {
+        anchor: {
+            vertical: 'top',
+            horizontal: 'left'
+        },
+        popup: POPUP_ALIGN_RTL,
+        collision: HORIZONTAL_COLLISION,
+        animate: 'left'
+    }
+};
+/**
+ * @hidden
+ */
+export const POPUP_SETTINGS = {
+    vertical: {
+        anchor: {
+            vertical: 'bottom',
+            horizontal: 'left'
+        },
+        popup: POPUP_ALIGN,
+        collision: VERTICAL_COLLISION,
+        animate: 'down'
+    },
+    horizontal: {
+        anchor: {
+            vertical: 'top',
+            horizontal: 'right'
+        },
+        popup: POPUP_ALIGN,
+        collision: HORIZONTAL_COLLISION,
+        animate: 'right'
+    }
+};

@@ -1,0 +1,21 @@
+import * as tslib_1 from "tslib";
+import { InstanceObserver } from '@progress/kendo-charts';
+/**
+ * @hidden
+ */
+var ChartInstanceObserver = /** @class */ (function (_super) {
+    tslib_1.__extends(ChartInstanceObserver, _super);
+    function ChartInstanceObserver(instance) {
+        var _this = _super.call(this, instance) || this;
+        _this.handlerMap = {
+            hideTooltip: 'onHideTooltip',
+            legendItemClick: 'onLegendItemClick',
+            render: 'onRender',
+            showTooltip: 'onShowTooltip',
+            init: 'onInit'
+        };
+        return _this;
+    }
+    return ChartInstanceObserver;
+}(InstanceObserver));
+export { ChartInstanceObserver };

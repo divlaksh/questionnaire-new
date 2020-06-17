@@ -1,0 +1,133 @@
+<table class="table table-striped table-bordered">
+  <thead class="thead-ibm">
+    <tr>
+      <th scope="col" class="text-center">Form #</th>
+      <th scope="col" class="text-center">Requestor</th>
+      <th scope="col" class="text-center">Status</th>
+      <th *ngIf="userType === approverType" scope="col" class="text-center">TSA</th>
+      <th scope="col" class="text-center">Last Updated</th>
+      <th scope="col" class="text-center"
+        *ngIf="!isMyList && !isCompletedList && !(isRejectedList && userType === tsaType)">
+        Actions
+        <!-- <i class="fa fa-refresh pull-right" aria-hidden="true"></i> -->
+      </th>
+      <th scope="col" class="text-center" *ngIf="isCompletedList">
+        Remark
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let form of formList | paginate: { itemsPerPage: 10, currentPage: page }; index as i">
+      <th scope="row">
+        <a [routerLink]="['/edit-estimator', form.formId, isView]">{{ form.formId}}</a>
+      </th>
+      <td>{{ form.requestorName}}</td>
+      <td>{{ form.formStatus}}
+      </td>
+      <td *ngIf="userType === approverType">
+        {{form.tsa}}
+      </td>
+      <td>{{form.updatedDate | date: 'dd-MMM-yyyy h:mm:ss a'}}</td>
+
+      <td class="text-center" *ngIf="!isMyList && !isCompletedList &&  !(isRejectedList && userType === tsaType)">
+        <i *ngIf="isFormList && userType === tsaType" class="fa fa-check-circle icon-ibm" title="Accept"
+          aria-hidden="true" (click)="acceptForm(form.formId, i)"></i>
+        <i *ngIf="isFormList && userType === approverType" class="fa fa-check-circle icon-ibm" title="Accept"
+          aria-hidden="true" (click)="acceptPendingApprovalForm(form.formId, i)"></i>
+        <i *ngIf=" isFormList && userType === requestorType" [routerLink]="['/edit-estimator', form.formId, true]"
+          class="fa fa-eye icon-ibm" aria-hidden="true"></i>
+        <!-- <i *ngIf="isPendingList && userType === approverType" class="fa fa-search icon-ibm" title="Preview" aria-hidden="true"></i> -->
+        <i *ngIf="isPendingList && userType === approverType" class="fa fa-thumbs-o-up icon-ibm text-success"
+          aria-hidden="true" title="Approve" (click)="approveForm(form.formId, i)"></i>
+        <i *ngIf="(isPendingList && (userType === approverType || userType === tsaType ))"
+          class="fa fa-ban icon-ibm text-danger" aria-hidden="true" title="Reject"
+          (click)="rejectModal(commentModal, form.formId, i)"></i>
+        <i *ngIf="isApprovedList && userType === requestorType" class="fa fa-check-circle icon-ibm" title="Accept"
+          aria-hidden="true" (click)="completeModal(commentModal, form.formId, i)"></i>
+        <i *ngIf="isApprovedList && userType === requestorType" class="fa fa-repeat icon-ibm " aria-hidden="true"
+          title="Revision" (click)="reviseModal(commentModal, form.formId, i)"></i>
+        <!-- <i *ngIf="isPendingListPage" class="fa fa-thumbs-up icon-ibm " aria-hidden="true" title="Approve" (click)="approveForm(form.formId, i)"></i> -->
+      </td>
+      <td class="text-center" *ngIf="isCompletedList">
+        {{form.remark}}
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+<div class="p-1 text-right">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
+<div *ngIf="isFormList && userType !== requestorType" class="row col-lg-12 col-xl-12 text-right">
+  <button class="btn btn-change btn-sm pull-right" (click)="refresh()">Refresh</button>
+</div>
+<div *ngIf="!formList || formList.length <= 0" class="text-center">
+  <span class="text-danger">No data available.</span>
+</div>
+
+
+<ng-template #commentModal let-modal>
+  <div class="modal-header card-header-ibm">
+    <h4 *ngIf="modalAction === 'reject'" class="modal-title" id="modal-basic-title">Reason For Rejection</h4>
+    <h4 *ngIf="modalAction === 'revise'" class="modal-title" id="modal-basic-title">Reason For Revision</h4>
+    <h4 *ngIf="modalAction !== 'reject' && modalAction !== 'revise'" class="modal-title" id="modal-basic-title">Comment
+    </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="font-size: 12px;">
+    <!-- <div *ngIf="!editTermsAndConditionsClicked" [innerHtml]="termsAndConditions.termsAndCondition">
+    </div> -->
+    <div class="form-group">
+      <form [formGroup]="commentForm">
+        <div class="row" *ngIf="showStatusDropDown">
+          <div class="col-lg-2 col-md-2"></div>
+          <div class="col-lg-8 col-md-8">
+            <div class="row">
+              <select formControlName="remark" id="custom" class="form-control" (change)="statusChanged($event)">
+                <option value="" [attr.selected]="true">Select Remark</option>
+                <option value="SUCCESS">Success</option>
+                <option value="FAILED">Failed</option>
+              </select>
+            </div>
+
+          </div>
+          <div class="col-lg-2 col-md-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2 col-md-2"></div>
+          <div class="col-lg-8 col-md-8">
+            <div class="row" style="padding-top: 20px !important;">
+              <textarea formControlName="comment" class="form-control" placeholder="Enter comments here..."></textarea>
+            </div>
+
+          </div>
+          <div class="col-lg-2 col-md-2"></div>
+        </div>
+      </form>
+
+    </div>
+    <div *ngFor="let comment of commentList" class="card">
+      <div class="card-header card-header-ibm">
+        {{comment.createdDate | date: 'dd-MMM-yyyy hh:mm:ss a'}}
+      </div>
+      <div class="card-body">
+        {{comment.comment}}
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="row col-md-12 col-lg-12 col-xl-12">
+      <div class="col-md-6 col-lg-6 col-xl-6 text-left">
+        <button type="button" class="btn btn-outline-primary btn-sm btn-primary-ibm"
+          (click)="modal.close('Cancel click')">Cancel</button>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-6 text-right">
+        <button [disabled]="!commentForm.valid || (showStatusDropDown && !commentStatusSelected)" type="button"
+          class="btn btn-outline-primary btn-sm  btn-primary-ibm" (click)="confirmAction()">Confirm</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

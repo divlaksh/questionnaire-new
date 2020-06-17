@@ -1,0 +1,12 @@
+import { CollectionService } from '../../common/collection.service';
+import { ConfigurationService } from '../../common/configuration.service';
+import { SeriesItemComponent } from '../../chart/series-item.component';
+/**
+ * The configuration component of a navigator series item
+ * ([see example]({% slug navigator_stockchart_charts %})).
+ */
+export declare class NavigatorSeriesItemComponent extends SeriesItemComponent {
+    protected configurationService: ConfigurationService;
+    protected collectionService: CollectionService;
+    constructor(configurationService: ConfigurationService, collectionService: CollectionService);
+}

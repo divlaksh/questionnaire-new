@@ -1,0 +1,45 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+/**
+ * A directive that selects a [template]({{ site.data.urls.angular['templatesyntax'] }})
+ * within the `<kendo-arcgauge>` component which will be used for the center template
+ * ([more information and example]({% slug centertemplate_arcgauge %})).
+ *
+ * @example
+ * ```ts
+ * import { Component } from '@angular/core';
+ *
+ * _@Component({
+ *     selector: 'my-app',
+ *     template: `
+ *         <kendo-arcgauge [value]="value">
+ *             <ng-template kendoArcGaugeCenterTemplate let-value="value">
+ *                 {{ value }}%
+ *             </ng-template>
+ *         </kendo-arcgauge>
+ *
+ *     `
+ * })
+ * export class AppComponent {
+ *   public value: number = 10;
+ * }
+ *
+ * ```
+ */
+var ArcCenterTemplateDirective = /** @class */ (function () {
+    function ArcCenterTemplateDirective(templateRef) {
+        this.templateRef = templateRef;
+    }
+    ArcCenterTemplateDirective.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[kendoArcGaugeCenterTemplate]'
+                },] },
+    ];
+    /** @nocollapse */
+    ArcCenterTemplateDirective.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, decorators: [{ type: core_1.Optional }] }
+    ]; };
+    return ArcCenterTemplateDirective;
+}());
+exports.ArcCenterTemplateDirective = ArcCenterTemplateDirective;

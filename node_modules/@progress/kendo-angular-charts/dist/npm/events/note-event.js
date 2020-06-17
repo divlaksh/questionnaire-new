@@ -1,0 +1,24 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = require("tslib");
+var base_event_1 = require("./base-event");
+/**
+ * @hidden
+ */
+var NoteEvent = /** @class */ (function (_super) {
+    tslib_1.__extends(NoteEvent, _super);
+    /**
+     * @hidden
+     */
+    function NoteEvent(e, sender) {
+        var _this = _super.call(this, sender) || this;
+        _this.category = e.category;
+        _this.dataItem = e.dataItem;
+        _this.series = e.series;
+        _this.value = e.value;
+        _this.visual = e.visual;
+        return _this;
+    }
+    return NoteEvent;
+}(base_event_1.BaseEvent));
+exports.NoteEvent = NoteEvent;
