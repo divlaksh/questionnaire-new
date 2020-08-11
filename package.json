@@ -64,7 +64,7 @@
     "@progress/kendo-angular-scrollview": "3.0.0",
     "@progress/kendo-angular-sortable": "3.0.0",
     "@progress/kendo-angular-toolbar": "2.0.0",
-    "@progress/kendo-angular-editor": "0.7.0",
+    "@progress/kendo-angular-editor": "1.2.3",
     "@progress/kendo-angular-tooltip": "2.0.0",
     "@progress/kendo-angular-treeview": "4.0.1",
     "@progress/kendo-angular-upload": "5.0.0",
