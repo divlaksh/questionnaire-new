@@ -68,7 +68,7 @@
     "@progress/kendo-angular-tooltip": "2.0.0",
     "@progress/kendo-angular-treeview": "4.0.1",
     "@progress/kendo-angular-upload": "5.0.0",
-    "chart.js": "2.7.3",
+    "chart.js": "2.9.4",
     "core-js": "2.5.7",
     "font-awesome": "4.7.0",
     "jquery": "3.3.1",
