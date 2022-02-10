@@ -80,7 +80,7 @@
     "ngx-pagination": "3.2.1",
     "ngx-quill-editor": "2.2.2",
     "ngx-toggle-switch": "2.0.5",
-    "node-sass": "4.14.1",
+    "node-sass": "7.0.0",
     "pdfmake": "0.1.65",
     "rxjs": "6.5.2",
     "sweetalert2": "8.16.3",
